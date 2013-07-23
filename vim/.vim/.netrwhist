@@ -1,9 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
-let g:netrw_dirhist_1='/home/ignacio/.oh-my-zsh/themes'
-let g:netrw_dirhist_2='/home/ignacio'
-let g:netrw_dirhist_3='/home/ignacio/.oh-my-zsh'
-let g:netrw_dirhist_4='/home/ignacio/workspace/sphinx/brs-python/source/brs'
-let g:netrw_dirhist_5='/home/ignacio/workspace/sphinx/brs-python/source'
-let g:netrw_dirhist_6='/home/ignacio/workspace/sphinx/brs-python/source/brs'
-let g:netrw_dirhist_7='/etc/php5'
