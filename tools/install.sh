@@ -1,5 +1,5 @@
 #!/bin/bash
-set -u; set -e;
+set -u;
 
 export CLONE_DIR=~/.local-setup
 export FLAGS_DIR=~/.local-setup-flags
