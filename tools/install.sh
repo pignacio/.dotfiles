@@ -1,8 +1,8 @@
 #!/bin/bash
-set -u
+set -u; set -e;
 
-CLONE_DIR=~/.local-setup
-FLAGS_DIR=~/.local-setup-flags
+export CLONE_DIR=~/.local-setup
+export FLAGS_DIR=~/.local-setup-flags
 
 if [ -d $CLONE_DIR ]
 then
@@ -15,7 +15,7 @@ mkdir -p $FLAGS_DIR
 
 echo "Cloning local-setup..."
 hash git >/dev/null && /usr/bin/env git clone \
-      ssh://www.bitbucket.org/irossi/local-setup.git $CLONE_DIR || {
+      https://www.bitbucket.org/irossi/local-setup.git $CLONE_DIR || {
   echo "git not installed"
   exit
 }
@@ -24,18 +24,18 @@ echo "Installing Oh-My-Zsh"
 curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
 
 function backupAndLink() {
-  fnamie=$1
+  fname=$1
   subdir=$2
-  fpath="~/$fname"
-  echo "Looking for $fname..."
-  if [ -e "$fpath" ]
+  fpath="$HOME/$fname"
+  echo "Looking for $fpath..."
+  if [ -e "$fpath" -o -h "$fpath" ]
   then
     rpath="$fpath.old"
     echo "Found '$fpath'. Moving to $rpath"
     mv $fpath $rpath
   fi
   src=$CLONE_DIR/$subdir/$fname
-  echo "Linking $fpath $src"
+  echo "Linking $fpath -> $src"
   ln -s $src $fpath
 }
 
