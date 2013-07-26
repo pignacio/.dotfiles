@@ -1,7 +1,8 @@
 #!/bin/bash
 set -u
 
-$CLONE_DIR=~/.local-setup
+CLONE_DIR=~/.local-setup
+FLAGS_DIR=~/.local-setup-flags
 
 if [ -d $CLONE_DIR ]
 then
@@ -9,6 +10,8 @@ then
   $CLONE_DIR/tools/update.sh"
   exit
 fi
+
+mkdir -p $FLAGS_DIR
 
 echo "Cloning local-setup..."
 hash git >/dev/null && /usr/bin/env git clone \
