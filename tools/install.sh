@@ -40,7 +40,7 @@ mkdir -p $FLAGS_DIR
 install_if_missing zsh
 install_if_missing git
 install_if_missing curl
-install_if_missing exhuberant-ctags
+install_if_missing exuberant-ctags
 
 echo "Cloning local-setup..."
 hash git >/dev/null && /usr/bin/env git clone \
