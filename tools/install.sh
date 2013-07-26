@@ -1,27 +1,14 @@
 #!/bin/bash
 set -u;
 
-export CLONE_DIR=~/.local-setup
-export FLAGS_DIR=~/.local-setup-flags
-
-if [ -d $CLONE_DIR ]
-then
-  echo "Local setup is already installed. If you want to update, run
-  $CLONE_DIR/tools/update.sh"
-  exit
-fi
-
-mkdir -p $FLAGS_DIR
-
-echo "Cloning local-setup..."
-hash git >/dev/null && /usr/bin/env git clone \
-      https://www.bitbucket.org/irossi/local-setup.git $CLONE_DIR || {
-  echo "git not installed"
-  exit
+function install() {
+   echo "Installing $1";
+   sudo apt-get install -y $1;
 }
 
-echo "Installing Oh-My-Zsh"
-curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
+function install_if_missing() {
+  dpkg -l $1 >> /dev/null || install $1;
+}
 
 function backupAndLink() {
   fname=$1
@@ -38,6 +25,33 @@ function backupAndLink() {
   echo "Linking $fpath -> $src"
   ln -s $src $fpath
 }
+
+export CLONE_DIR=~/.local-setup
+export FLAGS_DIR=~/.local-setup-flags
+
+if [ -d $CLONE_DIR ]
+then
+  echo "Local setup is already installed. If you want to update, run
+  $CLONE_DIR/tools/update.sh"
+  exit
+fi
+
+mkdir -p $FLAGS_DIR
+install_if_missing zsh
+install_if_missing git
+install_if_missing curl
+install_if_missing exhuberant-ctags
+
+echo "Cloning local-setup..."
+hash git >/dev/null && /usr/bin/env git clone \
+      https://www.bitbucket.org/irossi/local-setup.git $CLONE_DIR || {
+  echo "git not installed"
+  exit
+}
+
+echo "Installing Oh-My-Zsh"
+curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
+
 
 echo "Replacing oh-my-zsh config"
 backupAndLink .zshrc zsh
