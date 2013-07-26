@@ -42,6 +42,7 @@ backupAndLink .nachorc zsh
 
 echo "Pulling script to remove git merged branches"
 backupAndLink .gitrmb git
+backupAndLink .do_rmb.sh git
 
 echo "Looking for an existing vim config..."
 backupAndLink .vimrc vim
