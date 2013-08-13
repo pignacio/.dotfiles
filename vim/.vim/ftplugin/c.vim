@@ -10,7 +10,7 @@
 " -----------------------------------------------------------------
 "
 " Only do this when not done yet for this buffer
-" 
+"
 if exists("b:did_C_ftplugin")
   finish
 endif
@@ -20,13 +20,13 @@ let b:did_C_ftplugin = 1
 "
 if exists("g:C_MapLeader")
 	let maplocalleader	= g:C_MapLeader
-endif    
+endif
 "
 " ---------- C/C++ dictionary -----------------------------------
-" 
+"
 if exists("g:C_Dictionary_File")
     silent! exec 'setlocal dictionary+='.g:C_Dictionary_File
-endif    
+endif
 "
 " ---------- F-key mappings  ------------------------------------
 "
@@ -154,7 +154,7 @@ vnoremap    <buffer>  <silent>  <LocalLeader>pie  <Esc>:call C_InsertTemplate("p
 vnoremap    <buffer>  <silent>  <LocalLeader>pid  <Esc>:call C_InsertTemplate("preprocessor.ifdef-else-endif", "v")<CR>
 vnoremap    <buffer>  <silent>  <LocalLeader>pin  <Esc>:call C_InsertTemplate("preprocessor.ifndef-else-endif", "v")<CR>
 vnoremap    <buffer>  <silent>  <LocalLeader>pind <Esc>:call C_InsertTemplate("preprocessor.ifndef-def-endif", "v")<CR>
-                                     
+
 inoremap    <buffer>  <silent>  <LocalLeader>pie  <Esc>:call C_InsertTemplate("preprocessor.if-else-endif")<CR>
 inoremap    <buffer>  <silent>  <LocalLeader>pid  <Esc>:call C_InsertTemplate("preprocessor.ifdef-else-endif")<CR>
 inoremap    <buffer>  <silent>  <LocalLeader>pin  <Esc>:call C_InsertTemplate("preprocessor.ifndef-else-endif")<CR>
@@ -336,7 +336,7 @@ imap    <buffer>  <silent>  <LocalLeader>ro    <C-C>:call C_Toggle_Gvim_Xterm()<
 "
 " Abraxas CodeCheck (R)
 "
-if executable("check") 
+if executable("check")
   map    <buffer>  <silent>  <LocalLeader>rk         :call C_CodeCheck()<CR>:redraw<CR>:call C_HlMessage()<CR>
   map    <buffer>  <silent>  <LocalLeader>re         :call C_CodeCheckArguments()<CR>
  imap    <buffer>  <silent>  <LocalLeader>rk    <C-C>:call C_CodeCheck()<CR>:redraw<CR>:call C_HlMessage()<CR>
@@ -349,3 +349,16 @@ imap    <buffer>  <silent>  <LocalLeader>hp    <C-C>:call C_HelpCsupport()<CR>
  map    <buffer>  <silent>  <LocalLeader>hm         :call C_Help("m")<CR>
 imap    <buffer>  <silent>  <LocalLeader>hm    <C-C>:call C_Help("m")<CR>
 "
+
+
+setlocal tabstop=4
+setlocal softtabstop=4
+setlocal shiftwidth=4
+setlocal textwidth=80
+setlocal smarttab
+setlocal expandtab
+
+set nosmartindent
+
+set cino=N-s
+
