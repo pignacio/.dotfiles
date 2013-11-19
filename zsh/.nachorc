@@ -1,4 +1,4 @@
-export PYTHONPATH=/home/ignacio/workspace/brs-python/src:/home/ignacio/workspace/mw-python/src;
+source ~/.sma_python
 
 alias apt-get='sudo apt-get'
 alias mee='mvn eclipse:eclipse'
@@ -10,6 +10,11 @@ alias 'gp!!'='git push --force'
 alias grb='git rebase'
 alias grbi='git rebase -i'
 alias gpt='gp; gp --tags'
+
+alias run_aptana='nohup ~/opt/aptana/AptanaStudio3 & >/dev/null 2>&1'
+
+alias phpcheck='for x in $(find -name "*.php"); do php -l $x; done'
+
 source $HOME/.gitrmb
 
-
+alias pylint='pylint -f colorized -i y -d C0111'
