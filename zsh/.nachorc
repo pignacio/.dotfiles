@@ -10,6 +10,7 @@ alias 'gp!!'='git push --force'
 alias grb='git rebase'
 alias grbi='git rebase -i'
 alias gpt='gp; gp --tags'
+alias gap='git add --patch'
 
 alias run_aptana='nohup ~/opt/aptana/AptanaStudio3 & >/dev/null 2>&1'
 
