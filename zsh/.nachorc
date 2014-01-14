@@ -6,7 +6,7 @@ alias mee='mvn eclipse:eclipse'
 
 alias prmb='git checkout master; git pull; rmb'
 alias gk='gitk --all'
-alias 'gp!!'='git push --force'
+alias 'gpf!'='git push --force'
 alias grb='git rebase'
 alias grbi='git rebase -i'
 alias gpt='gp; gp --tags'
