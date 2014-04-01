@@ -3,6 +3,8 @@ filetype plugin on
 filetype plugin indent on
 syntax enable
 
+execute pathogen#infect()
+
 " configure tags - add additional tags here or comment out not-used ones
 set tags+=~/.vim/tags/cpp
 " set tags+=~/.vim/tags/gl
