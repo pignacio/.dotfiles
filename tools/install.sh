@@ -44,7 +44,7 @@ install_if_missing exuberant-ctags
 
 echo "Cloning local-setup..."
 hash git >/dev/null && /usr/bin/env git clone \
-      https://www.bitbucket.org/irossi/local-setup.git $CLONE_DIR || {
+      git@bitbucket.org:irossi/local-setup.git $CLONE_DIR || {
   echo "git not installed"
   exit
 }
