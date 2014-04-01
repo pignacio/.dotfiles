@@ -1,5 +1,10 @@
 source ~/.sma_python
 
+# Virtualenv stuff
+WORKON_HOME=/home/ignacio/.virtualenvs
+[[ -f /etc/bash_completion.d/virtualenvwrapper ]] && source /etc/bash_completion.d/virtualenvwrapper
+
+
 alias apt-get='sudo apt-get'
 alias mee='mvn eclipse:eclipse'
 
@@ -14,9 +19,25 @@ alias gap='git add --patch'
 
 alias run_aptana='nohup ~/opt/aptana/AptanaStudio3 & >/dev/null 2>&1'
 alias chromium-work='chromium-browser --user-data-dir=/home/ignacio/.work/chromium'
+alias hh-chromium='chromium-browser --user-data-dir=/home/ignacio/.hotelhoje/chromium'
 
 alias phpcheck='for x in $(find -name "*.php"); do php -l $x; done'
 
 source $HOME/.gitrmb
 
 alias pylint='pylint -f colorized -i y -d C0111'
+
+
+# play all function
+pall() {
+  for arg; do
+    if [ "$arg" = "--random" ]; then
+      SORT_FLAGS="${SORT_FLAGS:-} -R"
+    fi
+  done
+  noglob find $1 -name *.mp3 -o -name *.flac -o -name *.ogg | sort ${SORT_FLAGS:-} | tr '\n' '\0' | xargs -0 -n 10000 mplayer
+}
+
+#puppet stuff
+alias puppet-lint-all='noglob find -name *.pp -exec puppet-lint --with-filename {} +;'
+alias pla=puppet-lint-all
