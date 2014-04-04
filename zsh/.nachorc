@@ -1,5 +1,3 @@
-source ~/.sma_python
-
 # Virtualenv stuff
 WORKON_HOME=/home/ignacio/.virtualenvs
 [[ -f /etc/bash_completion.d/virtualenvwrapper ]] && source /etc/bash_completion.d/virtualenvwrapper
