@@ -16,8 +16,8 @@ alias gpt='gp; gp --tags'
 alias gap='git add --patch'
 
 alias run_aptana='nohup ~/opt/aptana/AptanaStudio3 >/dev/null 2>&1 &'
-alias chromium-work='chromium-browser --user-data-dir=/home/ignacio/.work/chromium'
-alias hh-chromium='chromium-browser --user-data-dir=/home/ignacio/.hotelhoje/chromium'
+alias chromium='nohup chromium-browser >>~/.logs/chromium.out 2>>~/.logs/chromium.err &'
+alias hh-chromium='nohup chromium-browser --user-data-dir=/home/ignacio/.hotelhoje/chromium >>/home/ignacio/.hotelhoje/logs/chromium.out 2>>/home/ignacio/.hotelhoje/logs/chromium.err &'
 
 alias phpcheck='for x in $(find -name "*.php"); do php -l $x; done'
 
