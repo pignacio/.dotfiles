@@ -17,6 +17,7 @@ alias gap='git add --patch'
 
 alias run_aptana='nohup ~/opt/aptana/AptanaStudio3 >/dev/null 2>&1 &'
 alias chromium='nohup chromium-browser >>~/.logs/chromium.out 2>>~/.logs/chromium.err &'
+alias incognito='nohup chromium-browser --incognito >>/dev/null 2>&1 &'
 alias hh-chromium='nohup chromium-browser --user-data-dir=/home/ignacio/.hotelhoje/chromium >>/home/ignacio/.hotelhoje/logs/chromium.out 2>>/home/ignacio/.hotelhoje/logs/chromium.err &'
 
 alias phpcheck='for x in $(find -name "*.php"); do php -l $x; done'
