@@ -26,6 +26,8 @@ source $HOME/.gitrmb
 
 alias pylint='pylint -f colorized -i y -d C0111'
 
+alias tomb='sudo tomb'
+
 
 # play all function
 pall() {
