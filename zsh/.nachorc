@@ -27,6 +27,10 @@ source $HOME/.gitrmb
 alias pylint='pylint -f colorized -i y -d C0111'
 
 alias tomb='sudo tomb'
+alias gifmaker='python /home/ignacio/workspaces/aptana/gifmaker/src/gifmaker.py'
+alias downchan='python /home/ignacio/workspaces/aptana/downchan/src/downchan.py'
+alias beet-playlist='python /home/ignacio/workspaces/aptana/beet-playlist/src/main.py'
+alias bp='beet-playlist'
 
 
 # play all function
