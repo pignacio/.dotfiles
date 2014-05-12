@@ -31,7 +31,7 @@ alias gifmaker='python /home/ignacio/workspaces/aptana/gifmaker/src/gifmaker.py'
 alias downchan='python /home/ignacio/workspaces/aptana/downchan/src/downchan.py'
 alias beet-playlist='python /home/ignacio/workspaces/aptana/beet-playlist/src/main.py'
 alias bp='beet-playlist'
-
+alias issue-branch='/home/ignacio/workspaces/aptana/scripts/src/issue_branch/issue_branch.py'
 
 # play all function
 pall() {
