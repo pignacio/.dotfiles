@@ -53,7 +53,14 @@ alias gifmaker="$(vepy gifmaker) /home/ignacio/workspaces/aptana/gifmaker/src/gi
 alias downchan="$(vepy downchan) /home/ignacio/workspaces/aptana/downchan/src/downchan.py"
 alias beet-playlist="$(vepy beet-playlist) /home/ignacio/workspaces/aptana/beet-playlist/src/main.py"
 alias bp='beet-playlist'
+alias chorddb="$(vepy chorddb) /home/ignacio/workspaces/aptana/chorddb/src/chorddb.py"
 alias issue-branch="$(vepy issue-branch) /home/ignacio/workspaces/aptana/scripts/src/issue_branch/issue_branch.py"
+alias p8='find -name "*.py" -exec pep8 {} \;'
+alias ap8='find -name "*.py" -exec autopep8 -i {} \;'
+
+if [[ ! -z "$(vefile youtube-dl bin/youtube-dl)" ]]; then
+  alias youtube-dl="$(vepy youtube-dl) $(vefile youtube-dl bin/youtube-dl)"
+fi
 
 # play all function
 pall() {
