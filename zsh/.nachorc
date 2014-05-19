@@ -2,6 +2,28 @@
 WORKON_HOME=/home/ignacio/.virtualenvs
 [[ -f /etc/bash_completion.d/virtualenvwrapper ]] && source /etc/bash_completion.d/virtualenvwrapper
 
+# Gets python binary from a virtualenv, or default python nif it does not exist
+function vefile() {
+  ve_python="/home/ignacio/.virtualenvs/$1/$2"
+  if [[ -f "$ve_python" ]]; then
+    echo $ve_python;
+  else
+    return 1
+  fi
+}
+
+function vepy() {
+  if ! vefile $1 bin/python; then
+    echo python
+  fi
+}
+
+function vepip() {
+  if ! vefile $1 bin/pip; then
+    echo pip
+  fi
+}
+
 
 alias apt-get='sudo apt-get'
 alias mee='mvn eclipse:eclipse'
@@ -27,11 +49,11 @@ source $HOME/.gitrmb
 alias pylint='pylint -f colorized -i y -d C0111'
 
 alias tomb='sudo tomb'
-alias gifmaker='python /home/ignacio/workspaces/aptana/gifmaker/src/gifmaker.py'
-alias downchan='python /home/ignacio/workspaces/aptana/downchan/src/downchan.py'
-alias beet-playlist='python /home/ignacio/workspaces/aptana/beet-playlist/src/main.py'
+alias gifmaker="$(vepy gifmaker) /home/ignacio/workspaces/aptana/gifmaker/src/gifmaker.py"
+alias downchan="$(vepy downchan) /home/ignacio/workspaces/aptana/downchan/src/downchan.py"
+alias beet-playlist="$(vepy beet-playlist) /home/ignacio/workspaces/aptana/beet-playlist/src/main.py"
 alias bp='beet-playlist'
-alias issue-branch='/home/ignacio/workspaces/aptana/scripts/src/issue_branch/issue_branch.py'
+alias issue-branch="$(vepy issue-branch) /home/ignacio/workspaces/aptana/scripts/src/issue_branch/issue_branch.py"
 
 # play all function
 pall() {
