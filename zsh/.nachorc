@@ -60,3 +60,4 @@ function git_prompt_info() {
   fi
 }
 
+# vim: ft=sh
