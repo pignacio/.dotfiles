@@ -26,12 +26,12 @@ function backupAndLink() {
   ln -s $src $fpath
 }
 
-export CLONE_DIR=~/.local-setup
-export FLAGS_DIR=~/.local-setup-flags
+export CLONE_DIR=~/.dotfiles
+export FLAGS_DIR=~/.dotfiles-flags
 
 if [ -d $CLONE_DIR ]
 then
-  echo "Local setup is already installed. If you want to update, run
+  echo ".dotfiles is already installed. If you want to update, run
   $CLONE_DIR/tools/update.sh"
   exit
 fi
@@ -42,10 +42,10 @@ install_if_missing git
 install_if_missing curl
 install_if_missing exuberant-ctags
 
-echo "Cloning local-setup..."
+echo "Cloning .dotfiles ..."
 hash git >/dev/null && /usr/bin/env git clone \
-      git@bitbucket.org:irossi/local-setup.git $CLONE_DIR || {
-  echo "git not installed"
+      git@github.com:wombita/.dotfiles $CLONE_DIR || {
+  echo "git clone failed"
   exit
 }
 
