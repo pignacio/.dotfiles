@@ -60,10 +60,11 @@ alias gpt='gp; gp --tags'
 alias gap='git add --patch'
 alias gmnf='git merge --no-ff'
 
-alias aptana='nohup ~/opt/aptana/AptanaStudio3 >/dev/null 2>&1 &'
+alias aptana='nohup ~/opt/aptana/AptanaStudio3 -data /home/ignacio/workspaces/aptana >/dev/null 2>&1 &'
 alias chromium='nohup chromium-browser >>~/.logs/chromium.out 2>>~/.logs/chromium.err &'
 alias incognito='nohup chromium-browser --incognito >>/dev/null 2>&1 &'
 alias hh-chromium='nohup chromium-browser --user-data-dir=/home/ignacio/.hotelhoje/chromium >>/home/ignacio/.hotelhoje/logs/chromium.out 2>>/home/ignacio/.hotelhoje/logs/chromium.err &'
+alias hh-aptana='nohup ~/opt/aptana/AptanaStudio3 -data /home/ignacio/hotelhoje/aptana >/dev/null 2>&1 &'
 
 alias phpcheck='for x in $(find -name "*.php"); do php -l $x; done'
 
