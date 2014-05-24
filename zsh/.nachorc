@@ -24,6 +24,28 @@ function vepip() {
   fi
 }
 
+# Fast workon virtualenv and dir selector
+function wo() {
+  local base_dir="$HOME/workspaces/aptana"
+  local project=$1
+  local project_dir=$(find $base_dir -maxdepth 4 -type d -name "$project" | head -1)
+  if [[ -z "$project_dir" ]]; then
+    echo "Could not find '$project' in '$base_dir'"
+    return 1
+  fi
+
+  cd "$project_dir"
+
+  if [[ ! -z "$VIRTUAL_ENV" ]]; then
+    deactivate
+  fi
+
+  if  vefile $project . >/dev/null; then
+    workon $project
+  fi
+
+}
+
 
 alias apt-get='sudo apt-get'
 alias mee='mvn eclipse:eclipse'
