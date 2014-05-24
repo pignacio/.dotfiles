@@ -5,7 +5,7 @@ WORKON_HOME=/home/ignacio/.virtualenvs
 # Gets python binary from a virtualenv, or default python nif it does not exist
 function vefile() {
   ve_python="/home/ignacio/.virtualenvs/$1/$2"
-  if [[ -f "$ve_python" ]]; then
+  if [[ -e "$ve_python" ]]; then
     echo $ve_python;
   else
     return 1
