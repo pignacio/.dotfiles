@@ -58,6 +58,7 @@ alias grb='git rebase'
 alias grbi='git rebase -i'
 alias gpt='gp; gp --tags'
 alias gap='git add --patch'
+alias gmnf='git merge --no-ff'
 
 alias aptana='nohup ~/opt/aptana/AptanaStudio3 >/dev/null 2>&1 &'
 alias chromium='nohup chromium-browser >>~/.logs/chromium.out 2>>~/.logs/chromium.err &'
