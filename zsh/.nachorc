@@ -67,6 +67,7 @@ alias hh-chromium='nohup chromium-browser --user-data-dir=/home/ignacio/.hotelho
 alias hh-aptana='nohup ~/opt/aptana/AptanaStudio3 -data /home/ignacio/hotelhoje/aptana >/dev/null 2>&1 &'
 
 alias djcompress='./manage.py collectstatic --noinput; ./manage.py compress'
+
 alias phpcheck='for x in $(find -name "*.php"); do php -l $x; done'
 
 source $HOME/.gitrmb
@@ -113,5 +114,21 @@ function git_prompt_info() {
     echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref}$(parse_git_dirty)$ZSH_THEME_GIT_PROMPT_SUFFIX"
   fi
 }
+
+# Taking the cool stuff from .oh-my-zsh/plugins/common-aliases
+alias -g HH='| head'
+alias -g TT='| tail'
+alias -g GG='| grep'
+alias -g LL="| less"
+alias -g NE="2> /dev/null"
+alias -g NUL="> /dev/null 2>&1"
+
+alias dud='du --max-depth=1 -h'
+alias duf='du -sh *'
+alias fd='find . -type d -name'
+alias ff='find . -type f -name'
+
+# ... and some of my own
+alias -g VV='| vim -'
 
 # vim: ft=sh
