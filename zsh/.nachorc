@@ -66,7 +66,7 @@ alias incognito='nohup chromium-browser --incognito >>/dev/null 2>&1 &'
 alias hh-chromium='nohup chromium-browser --user-data-dir=$HOME/.hotelhoje/chromium >>$HOME/.hotelhoje/logs/chromium.out 2>>$HOME/.hotelhoje/logs/chromium.err &'
 alias hh-aptana='nohup $HOME/opt/aptana/AptanaStudio3 -data $HOME/hotelhoje/aptana >/dev/null 2>&1 &'
 
-alias djcompress='./manage.py collectstatic --noinput; ./manage.py compress'
+alias djcompress='./manage.py collectstatic --noinput; time ./manage.py compress'
 
 alias phpcheck='for x in $(find -name "*.php"); do php -l $x; done'
 
