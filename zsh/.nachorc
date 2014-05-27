@@ -1,10 +1,10 @@
 # Virtualenv stuff
-WORKON_HOME=/home/ignacio/.virtualenvs
+WORKON_HOME=$HOME/.virtualenvs
 [[ -f /etc/bash_completion.d/virtualenvwrapper ]] && source /etc/bash_completion.d/virtualenvwrapper
 
 # Gets python binary from a virtualenv, or default python nif it does not exist
 function vefile() {
-  ve_python="/home/ignacio/.virtualenvs/$1/$2"
+  ve_python="$WORKON_HOME/$1/$2"
   if [[ -e "$ve_python" ]]; then
     echo $ve_python;
   else
@@ -60,11 +60,11 @@ alias gpt='gp; gp --tags'
 alias gap='git add --patch'
 alias gmnf='git merge --no-ff'
 
-alias aptana='nohup ~/opt/aptana/AptanaStudio3 -data /home/ignacio/workspaces/aptana >/dev/null 2>&1 &'
-alias chromium='nohup chromium-browser >>~/.logs/chromium.out 2>>~/.logs/chromium.err &'
+alias aptana='nohup $HOME/opt/aptana/AptanaStudio3 -data $HOME/workspaces/aptana >/dev/null 2>&1 &'
+alias chromium='nohup chromium-browser >>$HOME/.logs/chromium.out 2>>$HOME/.logs/chromium.err &'
 alias incognito='nohup chromium-browser --incognito >>/dev/null 2>&1 &'
-alias hh-chromium='nohup chromium-browser --user-data-dir=/home/ignacio/.hotelhoje/chromium >>/home/ignacio/.hotelhoje/logs/chromium.out 2>>/home/ignacio/.hotelhoje/logs/chromium.err &'
-alias hh-aptana='nohup ~/opt/aptana/AptanaStudio3 -data /home/ignacio/hotelhoje/aptana >/dev/null 2>&1 &'
+alias hh-chromium='nohup chromium-browser --user-data-dir=$HOME/.hotelhoje/chromium >>$HOME/.hotelhoje/logs/chromium.out 2>>$HOME/.hotelhoje/logs/chromium.err &'
+alias hh-aptana='nohup $HOME/opt/aptana/AptanaStudio3 -data $HOME/hotelhoje/aptana >/dev/null 2>&1 &'
 
 alias djcompress='./manage.py collectstatic --noinput; ./manage.py compress'
 
@@ -75,15 +75,15 @@ source $HOME/.gitrmb
 alias pylint='pylint -f colorized -i y -d C0111'
 
 alias tomb='sudo tomb'
-alias gifmaker="$(vepy gifmaker) /home/ignacio/workspaces/aptana/gifmaker/src/gifmaker.py"
-alias downchan="$(vepy downchan) /home/ignacio/workspaces/aptana/downchan/src/downchan.py"
-alias beet-playlist="$(vepy beet-playlist) /home/ignacio/workspaces/aptana/beet-playlist/src/main.py"
+alias gifmaker="$(vepy gifmaker) $HOME/workspaces/aptana/gifmaker/src/gifmaker.py"
+alias downchan="$(vepy downchan) $HOME/workspaces/aptana/downchan/src/downchan.py"
+alias beet-playlist="$(vepy beet-playlist) $HOME/workspaces/aptana/beet-playlist/src/main.py"
 alias bp='beet-playlist'
-alias chorddb="$(vepy chorddb) /home/ignacio/workspaces/aptana/chorddb/src/chorddb.py"
-alias issue-branch="$(vepy issue-branch) /home/ignacio/workspaces/aptana/scripts/issue-branch/src/issue_branch.py"
 alias p8='find -name "*.py" -exec pep8 {} \;'
 alias ap8='find -name "*.py" -exec autopep8 -i {} \;'
 
+alias chorddb="$(vepy chorddb) $HOME/workspaces/aptana/chorddb/src/chorddb.py"
+alias issue-branch="$(vepy issue-branch) $HOME/workspaces/aptana/issue-branch/src/issue_branch.py"
 if [[ ! -z "$(vefile youtube-dl bin/youtube-dl)" ]]; then
   alias youtube-dl="$(vepy youtube-dl) $(vefile youtube-dl bin/youtube-dl)"
 fi
