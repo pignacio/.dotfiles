@@ -117,6 +117,42 @@ function pl() {
   fi
   find $root -name "*.py" -exec $python $pylint -r n -d C0111 {} +
 }
+
+# run Nosetests
+function nose() {
+  if [[ -n "${1:-}" && -e "$1" ]]; then
+    test_folder=$1
+    shift
+  else
+    echo "Autodetecting test folder"
+    local test_folder=$(_detect_test_folder)
+    if [[ -z "$test_folder" ]]; then
+      echo "Could not autodetect test folder. Defaulting to current directory"
+      test_folder="."
+    fi
+  fi
+  echo "Running tests in '$test_folder'"
+  nosetests $test_folder "$@"
+}
+
+function _detect_test_folder() {
+  local parent=$(readlink -f .)
+  local root=$(readlink -f $(current_git_root 2>/dev/null || echo "/"))
+  while true; do
+    for subfolder in test tests; do
+      local folder=$parent/$subfolder
+      if [[ -d "$folder" ]]; then
+        echo $folder
+        return 0
+      fi
+    done
+    if [[ "$parent" == "$root" ]]; then
+      return 1;
+    fi
+    parent=$(dirname $parent)
+  done
+}
+
 # play all function
 pall() {
   for arg; do
