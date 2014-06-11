@@ -54,3 +54,4 @@ let g:jedi#use_splits_not_buffers = "right"
 let python_highlight_all=1
 
 let g:airline_powerline_fonts = 1
+let g:airline_section_z = airline#section#create(['%{strftime("%c")} ', 'linenr', ':%3c '])
