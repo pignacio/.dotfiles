@@ -49,6 +49,7 @@ function wo() {
 
 alias apt-get='sudo apt-get'
 alias mee='mvn eclipse:eclipse'
+alias ap='readlink -f'
 
 
 alias prmb='git checkout master; git pull; rmb'
@@ -197,5 +198,8 @@ alias ff='find . -type f -name'
 
 # ... and some of my own
 alias -g VV='| vim -'
+
+# 256 color terminal
+export TERM=xterm-256color
 
 # vim: ft=sh
