@@ -198,6 +198,8 @@ alias ff='find . -type f -name'
 
 # ... and some of my own
 alias -g VV='| vim -'
+alias -g SS='| sort'
+alias -g UU='| uniq'
 
 # 256 color terminal
 export TERM=xterm-256color
