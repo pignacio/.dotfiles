@@ -30,7 +30,7 @@ hi Statement   ctermfg=208  ctermbg=NONE  cterm=bold
 hi Function    ctermfg=35   ctermbg=NONE  cterm=NONE
 hi Conditional ctermfg=136  ctermbg=NONE  cterm=NONE
 hi Operator    ctermfg=208  ctermbg=NONE  cterm=NONE
-hi Todo        ctermfg=253  ctermbg=NONE  cterm=bold
+hi Todo        ctermfg=226  ctermbg=12    cterm=bold
 hi Comment     ctermfg=240  ctermbg=NONE  cterm=NONE
 hi Special     ctermfg=81   ctermbg=NONE  cterm=NONE
 hi String      ctermfg=169  ctermbg=NONE  cterm=NONE
@@ -40,6 +40,8 @@ hi Error       ctermfg=88   ctermbg=172   cterm=bold
 hi PreProc     ctermfg=81   ctermbg=NONE  cterm=NONE
 hi Boolean     ctermfg=38   ctermbg=NONE  cterm=bold
 hi Character   ctermfg=142  ctermbg=NONE  cterm=NONE
+hi Entity      ctermfg=196  ctermbg=NONE  cterm=bold
+hi Test        ctermfg=14   ctermbg=NONE  cterm=bold
 
 "Vim Stuff
 
