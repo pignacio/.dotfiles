@@ -2,28 +2,54 @@ set nocp
 filetype plugin on
 filetype plugin indent on
 syntax enable
+set nobackup
+set nowritebackup
+set history=500  " 500 commands to remember
+set ruler  " show the cursor position all the time
+set showcmd  " display incomplete commands
+set incsearch  " do incremental searching
+set background=dark
 
 execute pathogen#infect()
 
-" configure tags - add additional tags here or comment out not-used ones
-set tags+=~/.vim/tags/cpp
-" set tags+=~/.vim/tags/gl
-set tags+=~/.vim/tags/sdl
-" set tags+=~/.vim/tags/qt4
-" " build tags of your own project with Ctrl-F12
-map <C-F12> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
-"
-" " OmniCppComplete
-let OmniCpp_NamespaceSearch = 1
-let OmniCpp_GlobalScopeSearch = 1
-let OmniCpp_ShowAccess = 1
-let OmniCpp_ShowPrototypeInAbbr = 1 " show function parameters
-let OmniCpp_MayCompleteDot = 1 " autocomplete after .
-let OmniCpp_MayCompleteArrow = 1 " autocomplete after ->
-let OmniCpp_MayCompleteScope = 1 " autocomplete after ::
-let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
-" " automatically open and close the popup menu / preview window
-au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
-set completeopt=menuone,menu,longest,preview
-
 autocmd BufWrite * FixWhitespace
+
+" Enabling colors in console
+if (!has("gui_running"))
+    set t_Co=256
+endif
+
+" switch on highlighting the last used search pattern.
+set hlsearch
+
+colorscheme pychimp
+
+highlight Comment term=bold ctermfg=2
+highlight Constant term=underline ctermfg=7
+
+" Warning and Danger sections
+let &colorcolumn="80,".join(range(120,999),",")
+highlight ColorColumn ctermbg=233 guibg=#2c2d27
+
+" Always display the status line
+set laststatus=2
+
+" \ is the leader character
+let mapleader = ","
+
+" Hide search highlighting
+map <Leader>h :set invhls <CR>
+
+" Line numbers
+set number
+set numberwidth=5
+
+" case only matters with mixed case expressions
+set ignorecase
+set smartcase
+
+" jedi stuff
+let g:jedi#use_splits_not_buffers = "right"
+
+let python_highlight_all=1
+
