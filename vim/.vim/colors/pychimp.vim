@@ -53,8 +53,8 @@ hi Folded      ctermfg=67   ctermbg=16    cterm=bold
 hi FoldColumn  ctermfg=67   ctermbg=16    cterm=NONE
 hi LineNr      ctermfg=58   ctermbg=NONE  cterm=NONE
 hi NonText     ctermfg=58   ctermbg=NONE  cterm=NONE
-hi Pmenu       ctermfg=81   ctermbg=16    cterm=NONE
-hi PmenuSel    ctermfg=202  ctermbg=16    cterm=NONE
+hi Pmenu       ctermfg=16   ctermbg=71    cterm=NONE
+hi PmenuSel    ctermfg=15   ctermbg=29    cterm=bold
 hi PmenuSbar   ctermfg=81   ctermbg=16    cterm=NONE
 hi PmenuThumb  ctermfg=81   ctermbg=16    cterm=NONE
 hi Search      ctermfg=253  ctermbg=66    cterm=NONE
