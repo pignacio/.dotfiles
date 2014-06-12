@@ -58,3 +58,5 @@ let g:airline_powerline_fonts = 1
 let g:syntastic_python_pylint_args = "-d C0111"
 
 map <Leader>t :Tagbar <CR>
+
+set wildignore+=*.pyc
