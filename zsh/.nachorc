@@ -74,7 +74,7 @@ alias phpcheck='for x in $(find -name "*.php"); do php -l $x; done'
 source $HOME/.gitrmb
 
 alias current_git_root='git rev-parse --show-toplevel'
-alias pylint='python $WORKON_HOME/pylint/bin/pylint -d C0111'
+alias pylint='pylint -d C0111'
 alias tomb='sudo tomb'
 alias gifmaker="$(vepy gifmaker) $HOME/workspaces/aptana/gifmaker/src/gifmaker.py"
 alias downchan="$(vepy downchan) $HOME/workspaces/aptana/downchan/src/downchan.py"
@@ -85,6 +85,7 @@ alias issue-branch="$(vepy issue-branch) $HOME/workspaces/aptana/issue-branch/sr
 alias rp8='p8 $(current_git_root)'
 alias p8b='p8 | grep -v blank'
 alias plt='PYTHONPATH=$(readlink -f .) pl ../test'
+
 if [[ ! -z "$(vefile youtube-dl bin/youtube-dl)" ]]; then
   alias youtube-dl="noglob $(vepy youtube-dl) $(vefile youtube-dl bin/youtube-dl)"
 else
@@ -106,19 +107,7 @@ function ap8() {
 # pylint-all function
 function pl() {
   local root=${1:-.}
-  if [[ -z "$VIRTUAL_ENV" ]]; then
-    if [[ -e $WORKON_HOME/pylint ]]; then
-      local python=$WORKON_HOME/pylint/bin/python
-      local pylint=$WORKON_HOME/pylint/bin/pylint
-    else
-      local python=""
-      local pylint=pylint
-    fi
-  else
-    local python=$VIRTUAL_ENV/bin/python
-    local pylint=$VIRTUAL_ENV/bin/pylint
-  fi
-  find $root -name "*.py" -exec $python $pylint -r n -d C0111 {} +
+  find $root -name "*.py" -exec pylint -r n -d C0111 {} +
 }
 
 # run Nosetests
