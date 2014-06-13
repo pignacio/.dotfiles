@@ -48,9 +48,6 @@ set numberwidth=5
 set ignorecase
 set smartcase
 
-" jedi stuff
-let g:jedi#use_splits_not_buffers = "right"
-
 let python_highlight_all=1
 
 let g:airline_powerline_fonts = 1
