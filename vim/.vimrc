@@ -72,3 +72,5 @@ if &term =~ "xterm\\|rxvt"
   "autocmd VimLeave * silent !echo -ne "\033]112\007"
   " use \003]12;gray\007 for gnome-terminal
 endif
+
+set foldlevelstart=1
