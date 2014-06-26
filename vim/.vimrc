@@ -48,8 +48,10 @@ let g:airline_powerline_fonts = 1
 
 map <Leader>t :Tagbar <CR>
 
+" Ignores for CtrlP
 set wildignore+=*.pyc
 
+" Cursor coloring
 if &term =~ "xterm\\|rxvt"
   " use an orange cursor in insert mode
   let &t_SI = "\<Esc>]12;orange\x7"
