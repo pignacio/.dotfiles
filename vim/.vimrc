@@ -27,10 +27,6 @@ colorscheme pychimp
 highlight Comment term=bold ctermfg=2
 highlight Constant term=underline ctermfg=7
 
-" Warning and Danger sections
-let &colorcolumn="80,".join(range(120,999),",")
-highlight ColorColumn ctermbg=233 guibg=#2c2d27
-
 " Always display the status line
 set laststatus=2
 
@@ -48,10 +44,25 @@ set numberwidth=5
 set ignorecase
 set smartcase
 
-" jedi stuff
-let g:jedi#use_splits_not_buffers = "right"
-
-let python_highlight_all=1
-
 let g:airline_powerline_fonts = 1
-let g:airline_section_z = airline#section#create(['%{strftime("%c")} ', 'linenr', ':%3c '])
+let g:airline#extensions#tabline#enabled = 1
+
+map <Leader>t :Tagbar <CR>
+
+" Ignores for CtrlP
+set wildignore+=*.pyc
+
+" Cursor coloring
+if &term =~ "xterm\\|rxvt"
+  " use an orange cursor in insert mode
+  let &t_SI = "\<Esc>]12;orange\x7"
+  " use a red cursor otherwise
+  let &t_EI = "\<Esc>]12;red\x7"
+  silent !echo -ne "\033]12;red\007"
+  " reset cursor when vim exits
+  autocmd VimLeave * silent !echo -ne "\003]12;gray\007"
+  "autocmd VimLeave * silent !echo -ne "\033]112\007"
+  " use \003]12;gray\007 for gnome-terminal
+endif
+
+set foldlevelstart=1
