@@ -27,10 +27,6 @@ colorscheme pychimp
 highlight Comment term=bold ctermfg=2
 highlight Constant term=underline ctermfg=7
 
-" Warning and Danger sections
-let &colorcolumn="80,".join(range(120,999),",")
-highlight ColorColumn ctermbg=233 guibg=#2c2d27
-
 " Always display the status line
 set laststatus=2
 
@@ -48,11 +44,7 @@ set numberwidth=5
 set ignorecase
 set smartcase
 
-let python_highlight_all=1
-
 let g:airline_powerline_fonts = 1
-
-let g:syntastic_python_pylint_args = "-d C0111"
 
 map <Leader>t :Tagbar <CR>
 
