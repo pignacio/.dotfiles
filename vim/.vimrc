@@ -1,6 +1,42 @@
-set nocp
-filetype plugin on
-filetype plugin indent on
+set nocompatible              " be iMproved, required
+
+let vundle_is_present=1
+let vundle_readme=expand('~/.vim/bundle/Vundle.vim/README.md')
+if !filereadable(vundle_readme)
+    echo "Installing Vundle..."
+    echo ""
+    silent !mkdir -p ~/.vim/bundle
+    silent !git clone https://github.com/gmarik/Vundle.vim ~/.vim/bundle/Vundle.vim
+    let vundle_is_present=0
+endif
+
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'bling/vim-airline'
+Plugin 'tpope/vim-fugitive'
+Plugin 'majutsushi/tagbar'
+Plugin 'kien/ctrlp.vim'
+Plugin 'jmcantrell/vim-virtualenv'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+
+if vundle_is_present == 0
+     echo "Installing vundle plugins"
+     :PluginInstall
+endif
+
+filetype plugin indent on    " required
 syntax enable
 set nobackup
 set nowritebackup
@@ -9,8 +45,6 @@ set ruler  " show the cursor position all the time
 set showcmd  " display incomplete commands
 set incsearch  " do incremental searching
 set background=dark
-
-execute pathogen#infect()
 
 autocmd BufWrite * FixWhitespace
 
