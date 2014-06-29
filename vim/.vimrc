@@ -82,7 +82,7 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
 map <Leader>t :Tagbar <CR>
-
+let g:tagbar_autofocus = 1
 " Ignores for CtrlP
 set wildignore+=*.pyc
 
