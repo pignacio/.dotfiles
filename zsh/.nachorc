@@ -26,7 +26,7 @@ function vepip() {
 
 # Fast workon virtualenv and dir selector
 function wo() {
-  local base_dir="$HOME/workspaces/aptana"
+  local base_dir="$HOME/src"
   local project=$1
   local project_dir=$(find $base_dir -maxdepth 4 -type d -name "$project" | head -1)
   if [[ -z "$project_dir" ]]; then
@@ -73,15 +73,17 @@ alias phpcheck='for x in $(find -name "*.php"); do php -l $x; done'
 
 source $HOME/.gitrmb
 
+PIGNACIO_REPOS="$HOME/src/pignacio"
+
 alias current_git_root='git rev-parse --show-toplevel'
 alias pylint='pylint -d C0111'
 alias tomb='sudo tomb'
-alias gifmaker="$(vepy gifmaker) $HOME/workspaces/aptana/gifmaker/src/gifmaker.py"
-alias downchan="$(vepy downchan) $HOME/workspaces/aptana/downchan/src/downchan.py"
-alias beet-playlist="$(vepy beet-playlist) $HOME/workspaces/aptana/beet-playlist/src/main.py"
+alias gifmaker="$(vepy gifmaker) $PIGNACIO_REPOS/gifmaker/src/gifmaker.py"
+alias downchan="$(vepy downchan) $PIGNACIO_REPOS/downchan/src/downchan.py"
+alias beet-playlist="$(vepy beet-playlist) $PIGNACIO_REPOS/beet-playlist/src/main.py"
 alias bp='beet-playlist'
-alias chorddb="$(vepy chorddb) $HOME/workspaces/aptana/chorddb/src/chorddb.py"
-alias issue-branch="$(vepy issue-branch) $HOME/workspaces/aptana/issue-branch/src/issue_branch.py"
+alias chorddb="$(vepy chorddb) $PIGNACIO_REPOS/chorddb/src/chorddb.py"
+alias issue-branch="$(vepy issue-branch) $PIGNACIO_REPOS/issue-branch/src/issue_branch.py"
 alias rp8='p8 $(current_git_root)'
 alias p8b='p8 | grep -v blank'
 alias plt='PYTHONPATH=$(readlink -f .) pl ../test'
