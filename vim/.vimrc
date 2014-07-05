@@ -87,5 +87,5 @@ let g:tagbar_autofocus = 1
 " Ignores for CtrlP
 set wildignore+=*.pyc
 
+set foldlevelstart=0
 
-set foldlevelstart=1
