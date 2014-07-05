@@ -91,3 +91,6 @@ set foldlevelstart=0
 
 " Open splits to the right
 set splitright
+
+" Paste mode shortcut
+nnoremap <leader>p :setlocal paste!<cr>
