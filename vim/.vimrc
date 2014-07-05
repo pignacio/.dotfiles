@@ -94,3 +94,9 @@ set splitright
 
 " Paste mode shortcut
 nnoremap <leader>p :setlocal paste!<cr>
+
+" swap files directory
+set directory=~/.vim/tmp,/tmp
+if !isdirectory(&directory)
+    call mkdir(&directory, "p")
+endif
