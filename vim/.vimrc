@@ -89,3 +89,5 @@ set wildignore+=*.pyc
 
 set foldlevelstart=0
 
+" Open splits to the right
+set splitright
