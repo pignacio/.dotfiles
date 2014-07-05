@@ -15,3 +15,7 @@ highlight ColorColumn ctermbg=233 guibg=#2c2d27
 let python_highlight_all=1
 
 let g:syntastic_python_pylint_args = "-d C0111"
+
+map <Leader>cs :Coveragepy show <CR>
+map <Leader>cr :Coveragepy report <CR>
+map <Leader>cx :Coveragepy session <CR>
