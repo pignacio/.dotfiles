@@ -83,8 +83,8 @@ alias gifmaker="$(vepy gifmaker) $PIGNACIO_REPOS/gifmaker/src/gifmaker.py"
 alias downchan="$(vepy downchan) $PIGNACIO_REPOS/downchan/src/downchan.py"
 alias beet-playlist="$(vepy beet-playlist) $PIGNACIO_REPOS/beet-playlist/src/main.py"
 alias bp='beet-playlist'
-alias chorddb="$(vepy chorddb) $PIGNACIO_REPOS/chorddb/src/chorddb.py"
-alias issue-branch="$(vepy issue-branch) $PIGNACIO_REPOS/issue-branch/src/issue_branch.py"
+alias chorddb="$(vepy chorddb) $(vefile chorddb bin/chorddb)"
+alias issue-branch="$(vepy issue-branch) $(vefile issue-branch bin/issue-branch)"
 alias rp8='p8 $(current_git_root)'
 alias p8b='p8 | grep -v blank'
 alias plt='PYTHONPATH=$(readlink -f .) pl ../test'
