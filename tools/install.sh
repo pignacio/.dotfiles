@@ -64,7 +64,4 @@ backupAndLink .vimrc vim
 backupAndLink .vim vim
 
 echo "Setting up inital git configuration if needed"
-$CLONE_DIR/git/git_config.sh
-
-
-
+$CLONE_DIR/git/install.sh
