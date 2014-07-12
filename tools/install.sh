@@ -2,12 +2,12 @@
 set -u;
 
 function install() {
-   echo "Installing $1";
-   sudo apt-get install -y $1;
-}
-
-function install_if_missing() {
-  dpkg -l $1 >> /dev/null || install $1;
+  local X=0
+  for package; do
+    (( X=$X+1 ))
+    echo "Installing package $X/$#: $package";
+    sudo apt-get install -y $package;
+  done
 }
 
 function backupAndLink() {
@@ -29,18 +29,16 @@ function backupAndLink() {
 export CLONE_DIR=~/.dotfiles
 export FLAGS_DIR=~/.dotfiles-flags
 
+
+mkdir -p $FLAGS_DIR
+install zsh git curl exuberant-ctags
+
 if [ -d $CLONE_DIR ]
 then
   echo ".dotfiles is already installed. If you want to update, run
   $CLONE_DIR/tools/update.sh"
   exit
 fi
-
-mkdir -p $FLAGS_DIR
-install_if_missing zsh
-install_if_missing git
-install_if_missing curl
-install_if_missing exuberant-ctags
 
 echo "Cloning .dotfiles ..."
 hash git >/dev/null && /usr/bin/env git clone \
