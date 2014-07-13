@@ -1,0 +1,13 @@
+diff --git a/themes/flazz.zsh-theme b/themes/flazz.zsh-theme
+index 280794f..148e338 100644
+--- a/themes/flazz.zsh-theme
++++ b/themes/flazz.zsh-theme
+@@ -5,7 +5,7 @@ fi
+ 
+ local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
+ 
+-PROMPT='%m%{${fg_bold[magenta]}%} :: %{$reset_color%}%{${fg[green]}%}%3~ $(git_prompt_info)%{${fg_bold[$CARETCOLOR]}%}%#%{${reset_color}%} '
++PROMPT='$(virtualenv_prompt_info)%{$reset_color%}%m%{${fg_bold[magenta]}%} :: %{$reset_color%}%{${fg[green]}%}%3~ $(git_prompt_info)%{${fg_bold[$CARETCOLOR]}%}%#%{${reset_color}%} '
+ 
+ RPS1='$(vi_mode_prompt_info) ${return_code}'
+ 
