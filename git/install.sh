@@ -1,14 +1,20 @@
-function set_git_global_config() {
+#!/bin/bash
+set -u;
+
+. $(dirname $0)/../tools/log.sh;
+
+set_git_global_config() {
   key=$1
   value=$2
   if [[ "$(git config --global "$key")" == "$value" ]]; then
-    echo "$key is already set."
+    log_info "$key is already set."
   else
-    echo "Setting $key to '$value'"
+    log_title "Setting $key to '$value'"
     git config --global "$key" "$value"
   fi
 }
 
+log_title "Configuring git..."
 set_git_global_config user.name "Ignacio Rossi";
 set_git_global_config user.email "rossi.ignacio@gmail.com";
 set_git_global_config push.default current;

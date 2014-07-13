@@ -1,67 +1,71 @@
 #!/bin/bash
 set -u;
 
-function install() {
+. $(dirname $0)/log.sh
+
+install() {
   local X=0
   for package; do
     (( X=$X+1 ))
-    echo "Installing package $X/$#: $package";
+    log_title "Installing package $X/$#: $package";
     sudo apt-get install -y $package;
   done
 }
 
-function backupAndLink() {
+backupAndLink() {
   fname=$1
   subdir=$2
   fpath="$HOME/$fname"
-  echo "Looking for $fpath..."
-  if [ -e "$fpath" -o -h "$fpath" ]
-  then
+  src=$CLONE_DIR/$subdir/$fname
+  log_title "Configuration file for $subdir: $fname"
+  if [ -e "$fpath" -o -h "$fpath" ]; then
+    if [[ "$(readlink -f $fpath)" == "$(readlink -f $src)" ]]; then
+      log_info "$fpath already points to $src. Skipping"
+      return
+    fi
     rpath="$fpath.old"
-    echo "Found '$fpath'. Moving to $rpath"
+    log_info "Found '$fpath'. Moving to $rpath"
     mv $fpath $rpath
   fi
-  src=$CLONE_DIR/$subdir/$fname
-  echo "Linking $fpath -> $src"
+  log_info "Linking $fpath -> $src"
   ln -s $src $fpath
 }
 
 export CLONE_DIR=~/.dotfiles
-export FLAGS_DIR=~/.dotfiles-flags
-
+export FLAGS_DIR=~/.dotfiles/.flags
 
 mkdir -p $FLAGS_DIR
-install zsh git curl exuberant-ctags
 
+install zsh git curl
+
+log_title "Installing .dotfiles"
 if [ -d $CLONE_DIR ]
 then
-  echo ".dotfiles is already installed. If you want to update, run
-  $CLONE_DIR/tools/update.sh"
-  exit
+  log_info ".dotfiles is already installed. Updating..."
+  ( cd $CLONE_DIR && git pull --rebase )
+else
+  log_info "Cloning .dotfiles ..."
+  hash git >/dev/null && /usr/bin/env git clone \
+        git@github.com:pignacio/.dotfiles $CLONE_DIR || {
+    log_error "git clone failed"
+    exit
+  }
+
 fi
 
-echo "Cloning .dotfiles ..."
-hash git >/dev/null && /usr/bin/env git clone \
-      git@github.com:wombita/.dotfiles $CLONE_DIR || {
-  echo "git clone failed"
-  exit
-}
+$CLONE_DIR/oh-my-zsh/install.sh
 
-echo "Installing Oh-My-Zsh"
-curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
-
-
-echo "Replacing oh-my-zsh config"
+log_title "Replacing oh-my-zsh config"
 backupAndLink .zshrc zsh
 backupAndLink .nachorc zsh
 
-echo "Pulling script to remove git merged branches"
+log_title "Pulling script to remove git merged branches"
 backupAndLink .gitrmb git
 backupAndLink .do_rmb.sh git
 
-echo "Looking for an existing vim config..."
+log_title "Looking for an existing vim config..."
 backupAndLink .vimrc vim
 backupAndLink .vim vim
 
-echo "Setting up inital git configuration if needed"
 $CLONE_DIR/git/install.sh
+$CLONE_DIR/packages/install.sh
