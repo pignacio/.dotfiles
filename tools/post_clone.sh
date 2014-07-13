@@ -1,9 +1,6 @@
 #!/bin/bash
 set -u;
 
-export CLONE_DIR=~/.dotfiles
-export FLAGS_DIR=~/.dotfiles/.flags
-
 . $CLONE_DIR/tools/log.sh;
 . $CLONE_DIR/tools/apt.sh;
 
@@ -26,23 +23,20 @@ backupAndLink() {
   ln -s $src $fpath
 }
 
-mkdir -p $FLAGS_DIR
+$CLONE_DIR/oh-my-zsh/install.sh
 
-install zsh git curl
+log_title "Replacing oh-my-zsh config"
+backupAndLink .zshrc zsh
+backupAndLink .nachorc zsh
 
-log_title "Installing .dotfiles"
-if [ -d $CLONE_DIR ]
-then
-  log_info ".dotfiles is already installed. Updating..."
-  ( cd $CLONE_DIR && git pull --rebase )
-else
-  log_info "Cloning .dotfiles ..."
-  hash git >/dev/null && /usr/bin/env git clone \
-        git@github.com:pignacio/.dotfiles $CLONE_DIR || {
-    log_error "git clone failed"
-    exit
-  }
+log_title "Pulling script to remove git merged branches"
+backupAndLink .gitrmb git
+backupAndLink .do_rmb.sh git
 
-fi
+log_title "Replacing existing vim config..."
+backupAndLink .vimrc vim
+backupAndLink .vim vim
 
-$CLONE_DIR/tools/post_clone.sh
+$CLONE_DIR/git/install.sh
+$CLONE_DIR/vim/install.sh
+$CLONE_DIR/packages/install.sh
