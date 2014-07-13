@@ -1,7 +1,7 @@
 #!/bin/bash
 set -u
 
-. $(dirname $0)/../tools/log.sh
+. $CLONE_DIR/tools/log.sh;
 
 install_oh_my_zsh() {
   if [ ! -d ~/.oh-my-zsh ]; then

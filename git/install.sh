@@ -1,7 +1,7 @@
 #!/bin/bash
 set -u;
 
-. $(dirname $0)/../tools/log.sh;
+. $CLONE_DIR/tools/log.sh;
 
 set_git_global_config() {
   key=$1

@@ -1,16 +1,11 @@
 #!/bin/bash
 set -u;
 
-. $(dirname $0)/log.sh
+export CLONE_DIR=~/.dotfiles
+export FLAGS_DIR=~/.dotfiles/.flags
 
-install() {
-  local X=0
-  for package; do
-    (( X=$X+1 ))
-    log_title "Installing package $X/$#: $package";
-    sudo apt-get install -y $package;
-  done
-}
+. $CLONE_DIR/tools/log.sh;
+. $CLONE_DIR/tools/apt.sh;
 
 backupAndLink() {
   fname=$1
@@ -30,9 +25,6 @@ backupAndLink() {
   log_info "Linking $fpath -> $src"
   ln -s $src $fpath
 }
-
-export CLONE_DIR=~/.dotfiles
-export FLAGS_DIR=~/.dotfiles/.flags
 
 mkdir -p $FLAGS_DIR
 
