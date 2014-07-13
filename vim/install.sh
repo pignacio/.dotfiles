@@ -4,7 +4,7 @@ set -u
 
 . $CLONE_DIR/tools/log.sh
 
-INCONSOLATA_PATH="~/.fonts/Inconsolata-dz for Powerline.otf"
+INCONSOLATA_PATH="$HOME/.fonts/Inconsolata-dz for Powerline.otf"
 if [ -f "$INCONSOLATA_PATH" ]; then
   log_info "Inconsolata for Powerline is already downloaded"
 else
