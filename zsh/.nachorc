@@ -89,7 +89,7 @@ alias p8b='p8 | grep -v blank'
 alias plt='PYTHONPATH=$(readlink -f .) pl ../test'
 
 if [[ ! -z "$(vefile youtube-dl bin/youtube-dl)" ]]; then
-  alias youtube-dl="noglob $(vepy youtube-dl) $(vefile youtube-dl bin/youtube-dl)"
+  alias youtube-dl="noglob $(vefile youtube-dl bin/youtube-dl)"
 else
   alias youtube-dl='noglob youtube-dl'
 fi
