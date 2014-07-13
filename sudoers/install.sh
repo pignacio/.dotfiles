@@ -20,3 +20,4 @@ add_sudoers_no_pass_command /usr/local/bin/tomb
 add_sudoers_no_pass_command /usr/bin/apt-get
 add_sudoers_no_pass_command /sbin/shutdown
 add_sudoers_no_pass_command /sbin/reboot
+add_sudoers_no_pass_command /usr/sbin/iftop
