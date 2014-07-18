@@ -38,12 +38,19 @@ then
   ( cd $CLONE_DIR && git pull --rebase )
 else
   log_info "Cloning .dotfiles ..."
-  hash git >/dev/null && /usr/bin/env git clone \
-        git@github.com:pignacio/.dotfiles $CLONE_DIR || {
-    log_error "git clone failed"
-    exit
-  }
-
+  if ssh git@github.com >/dev/null 2>&1; then
+    log_info "Cloning via ssh";
+    /usr/bin/env git clone git@github.com:pignacio/.dotfiles $CLONE_DIR || {
+      log_error "git clone failed"
+      exit
+    }
+  else
+    log_info "Cloning via http";
+    /usr/bin/env git clone http://www.github.com/pignacio/.dotfiles $CLONE_DIR || {
+      log_error "git clone failed"
+      exit
+    }
+  fi
 fi
 
 $CLONE_DIR/tools/post_clone.sh
