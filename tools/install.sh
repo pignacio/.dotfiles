@@ -3,6 +3,9 @@ set -u;
 
 export CLONE_DIR=~/.dotfiles
 export FLAGS_DIR=~/.dotfiles/.flags
+export DOTFILES_ENV_FILE="$CLONE_DIR/.env"
+
+[[ -f $DOTFILES_ENV_FILE ]] && . $DOTFILES_ENV_FILE
 
 if [ -f $CLONE_DIR/tools/log.sh ]; then
   . $CLONE_DIR/tools/log.sh
@@ -51,6 +54,10 @@ else
       exit
     }
   fi
+  if [[ "${DOTFILES_GUI:-}" == "false" ]]; then
+    echo "export DOTFILES_GUI=\"false\"" > $DOTFILES_ENV_FILE
+  fi
+
 fi
 
 $CLONE_DIR/tools/post_clone.sh
