@@ -68,6 +68,7 @@ alias w-chromium='nohup chromium-browser --user-data-dir=$HOME/.work/chromium >>
 alias webogram='chromium-browser --user-data-dir=$HOME/.webogram >/dev/null 2>&1'
 
 alias djcompress='./manage.py collectstatic --noinput; time ./manage.py compress'
+alias djrunserver='djcompress; ./manage.py runserver'
 
 alias phpcheck='for x in $(find -name "*.php"); do php -l $x; done'
 
