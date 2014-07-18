@@ -6,10 +6,6 @@
 log_title "Installing non-GUI packages"
 install $(cat $(dirname $0)/packages)
 
-log_title "Updating apt-file cache"
-sudo apt-file update
-log_info "Done updating apt-file cache"
-
 if [[ "${DOTFILES_GUI:-}" != "false" ]]; then
   log_title "Installing GUI packages"
   install $(cat $(dirname $0)/gui_packages)
