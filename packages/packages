@@ -1,9 +1,5 @@
 apt-file
 exuberant-ctags
-git-cola
-gitk
 htop
-meld
 vim
 wget
-xchat

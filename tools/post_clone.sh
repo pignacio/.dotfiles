@@ -4,6 +4,8 @@ set -u;
 . $CLONE_DIR/tools/log.sh;
 . $CLONE_DIR/tools/apt.sh;
 
+[[ -f $DOTFILES_ENV_FILE ]] && . $DOTFILES_ENV_FILE
+
 backupAndLink() {
   fname=$1
   subdir=$2
