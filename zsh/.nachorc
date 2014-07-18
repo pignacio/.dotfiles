@@ -84,7 +84,7 @@ alias downchan="$(vepy downchan) $PIGNACIO_REPOS/downchan/src/downchan.py"
 alias beet-playlist="$(vepy beet-playlist) $PIGNACIO_REPOS/beet-playlist/src/main.py"
 alias bp='beet-playlist'
 alias chorddb="$(vefile chorddb bin/chorddb)"
-alias issue-branch="$(vefile issue-branch bin/issue-branch)"
+alias issue2branch="$(vefile issue2branch bin/issue2branch)"
 alias rp8='p8 $(current_git_root)'
 alias p8b='p8 | grep -v blank'
 alias plt='PYTHONPATH=$(readlink -f .) pl ../test'
