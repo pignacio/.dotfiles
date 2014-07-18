@@ -100,3 +100,7 @@ set directory=~/.vim/tmp,/tmp
 if !isdirectory(&directory)
     call mkdir(&directory, "p")
 endif
+
+" tabswap mappings
+map <leader>j :tabp <cr>
+map <leader>k :tabn <cr>
