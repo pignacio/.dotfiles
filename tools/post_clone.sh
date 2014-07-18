@@ -39,7 +39,7 @@ log_title "Replacing existing vim config..."
 backupAndLink .vimrc vim
 backupAndLink .vim vim
 
+$CLONE_DIR/packages/install.sh
 $CLONE_DIR/git/install.sh
 $CLONE_DIR/vim/install.sh
-$CLONE_DIR/packages/install.sh
 $CLONE_DIR/sudoers/install.sh
