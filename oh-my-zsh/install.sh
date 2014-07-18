@@ -29,5 +29,18 @@ patch_flazz() {
   fi
 }
 
+set_zsh_as_default_shell() {
+  log_title "Setting zsh as default shell"
+  local current=$(getent passwd $(whoami)  | cut -d: -f 7)
+  local zsh=$(which zsh)
+  if [[ "$current" != "$zsh" ]]; then
+    log_info "Current shell is '$current'. Setting '$zsh'"
+    chsh -s $zsh
+  else
+    log_info "$zsh is already your default shell"
+  fi
+}
+
 install_oh_my_zsh
 patch_flazz
+set_zsh_as_default_shell
