@@ -23,6 +23,8 @@ backupAndLink() {
   ln -s $src $fpath
 }
 
+mkdir -p $FLAGS_DIR
+
 $CLONE_DIR/oh-my-zsh/install.sh
 
 log_title "Replacing oh-my-zsh config"
