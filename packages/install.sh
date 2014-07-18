@@ -5,3 +5,7 @@
 
 log_title "Installing some packages"
 install $(cat $(dirname $0)/packages)
+
+log_title "Updating apt-file cache"
+sudo apt-file update
+log_info "Done updating apt-file cache"
