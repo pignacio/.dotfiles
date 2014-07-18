@@ -104,3 +104,6 @@ endif
 " tabswap mappings
 map <leader>j :tabp <cr>
 map <leader>k :tabn <cr>
+
+" sort mapping
+map <leader>s :sort <cr>
