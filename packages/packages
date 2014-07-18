@@ -1,8 +1,9 @@
 apt-file
-meld
-gitk
-git-cola
-htop
-xchat
 exuberant-ctags
+git-cola
+gitk
+htop
+meld
 vim
+wget
+xchat
