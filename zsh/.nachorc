@@ -76,7 +76,7 @@ alias gmnf='git merge --no-ff'
 
 alias aptana='nohup $HOME/opt/aptana/AptanaStudio3 -data $HOME/workspaces/aptana >/dev/null 2>&1 &'
 alias chromium='nohup chromium-browser >>$HOME/.logs/chromium.out 2>>$HOME/.logs/chromium.err &'
-alias incognito='nohup chromium-browser --incognito >>/dev/null 2>&1 &'
+alias incognito='chromium-browser --incognito'
 alias w-chromium='nohup chromium-browser --user-data-dir=$HOME/.work/chromium >>/dev/null 2>&1'
 alias webogram='chromium-browser --user-data-dir=$HOME/.webogram >/dev/null 2>&1'
 
