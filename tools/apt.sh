@@ -7,10 +7,14 @@ install() {
   for package; do
     (( X=$X+1 ))
     log_title "Installing package $X/$#: $package";
-    if dpkg -l $package >> /dev/null; then
+    if is_installed "$package"; then
       log_info "'$package' is already installed"
     else
       sudo apt-get install -y $package;
     fi
   done
+}
+
+is_installed() {
+  dpkg -l "$1" >> /dev/null
 }
