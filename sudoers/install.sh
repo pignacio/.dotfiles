@@ -2,6 +2,7 @@
 set -u;
 
 . $CLONE_DIR/tools/log.sh
+. $CLONE_DIR/tools/apt.sh
 
 NO_PASSWD_FILE=/etc/sudoers.d/nopasswd
 
@@ -21,3 +22,14 @@ add_sudoers_no_pass_command /usr/bin/apt-get
 add_sudoers_no_pass_command /sbin/shutdown
 add_sudoers_no_pass_command /sbin/reboot
 add_sudoers_no_pass_command /usr/sbin/iftop
+
+if is_installed lxc; then
+  log_title "Adding lxc commands to sudoers file"
+  add_sudoers_no_pass_command $(which lxc-create)
+  add_sudoers_no_pass_command $(which lxc-destroy)
+  add_sudoers_no_pass_command $(which lxc-start)
+  add_sudoers_no_pass_command $(which lxc-stop)
+  add_sudoers_no_pass_command $(which lxc-console)
+  add_sudoers_no_pass_command $(which lxc-info)
+fi
+
