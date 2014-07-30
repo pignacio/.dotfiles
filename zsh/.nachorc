@@ -24,6 +24,19 @@ function vepip() {
   fi
 }
 
+function vebinalias() {
+  local bin=$1
+  if [ -n "$2" ]; then
+    local venv=$2
+  else
+    local venv=$1
+  fi
+  local vebin=$(vefile $venv bin/$bin)
+  if [ -n "$vebin" ]; then
+    alias $bin=$vebin
+  fi
+}
+
 # Fast workon virtualenv and dir selector
 function wo() {
   local base_dir="$HOME/src"
