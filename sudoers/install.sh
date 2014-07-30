@@ -8,11 +8,15 @@ NO_PASSWD_FILE=/etc/sudoers.d/nopasswd
 
 add_sudoers_no_pass_command() {
   bin=$1
-  if grep $bin $NO_PASSWD_FILE >>/dev/null; then
-    log_info "'$bin' is already in $NO_PASSWD_FILE"
+  if [ -f $bin ]; then
+    if grep $bin $NO_PASSWD_FILE >>/dev/null; then
+      log_info "'$bin' is already in $NO_PASSWD_FILE"
+    else
+      log_title "Adding $bin command to $NO_PASSWD_FILE"
+      echo "$(whoami) $(hostname) = (root) NOPASSWD: $bin" | sudo tee -a $NO_PASSWD_FILE
+    fi
   else
-    log_title "Adding $bin command to $NO_PASSWD_FILE"
-    echo "$(whoami) $(hostname) = (root) NOPASSWD: $bin" | sudo tee -a $NO_PASSWD_FILE
+    log_info "'$bin' does not exists"
   fi
 }
 
