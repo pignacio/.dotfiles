@@ -22,3 +22,15 @@ set_git_global_config core.editor vim;
 set_git_global_config color.ui true;
 set_git_global_config merge.conflictstyle diff3;
 set_git_global_config alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit";
+
+log_title "SCM Breeze"
+if [ -d "$HOME/.scm_breeze" ]; then
+  log_info "Updating SCM Breeze"
+  update_scm_breeze
+else
+  log_info "Installing SCM Breeze"
+  git clone git://github.com/ndbroadbent/scm_breeze.git ~/.scm_breeze
+  ~/.scm_breeze/install.sh
+fi
+
+

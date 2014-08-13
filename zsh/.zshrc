@@ -43,3 +43,5 @@ function vi_mode_prompt_info() {
 
 # Customize to your needs...
 export PATH=/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
+
+#[ -s "/home/ignacio/.scm_breeze/scm_breeze.sh" ] && source "/home/ignacio/.scm_breeze/scm_breeze.sh"
