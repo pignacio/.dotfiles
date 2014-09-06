@@ -208,4 +208,7 @@ alias -g UU='| uniq'
 # 256 color terminal
 export TERM=xterm-256color
 
+# Interactive comments
+setopt interactivecomments
+
 # vim: ft=zsh
