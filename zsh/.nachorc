@@ -102,6 +102,8 @@ alias djrunserver='djcompress; ./manage.py runserver'
 
 alias phpcheck='for x in $(find -name "*.php"); do php -l $x; done'
 
+alias puppet='sudo puppet'
+
 source $HOME/.gitrmb
 
 PIGNACIO_REPOS="$HOME/src/pignacio"
