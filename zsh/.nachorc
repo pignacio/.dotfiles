@@ -75,7 +75,21 @@ alias grb='git rebase'
 alias grbi='git rebase -i'
 alias gpt='gp; gp --tags'
 alias gap='git add --patch'
-alias gmnf='git merge --no-ff'
+
+gmnf() {
+  if [[ -z "$1" ]]; then
+    echo "No branch supplied"
+    return 1
+  fi
+  branch=$1;
+  shift;
+  if (( $(git log $branch.. | wc -l ) > 0 )); then
+    echo "Para mergear $branch falta el rebase, papi";
+  else
+    git merge --no-ff $branch "$@"
+  fi
+}
+compdef _git gmnf=git-merge
 
 alias aptana='nohup $HOME/opt/aptana/AptanaStudio3 -data $HOME/workspaces/aptana >/dev/null 2>&1 &'
 alias chromium='nohup chromium-browser >>$HOME/.logs/chromium.out 2>>$HOME/.logs/chromium.err &'
