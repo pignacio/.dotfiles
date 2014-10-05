@@ -19,16 +19,18 @@ call vundle#begin()
 "call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
-Plugin 'davidhalter/jedi-vim'
-Plugin 'scrooloose/syntastic'
-Plugin 'bling/vim-airline'
-Plugin 'tpope/vim-fugitive'
-Plugin 'majutsushi/tagbar'
-Plugin 'kien/ctrlp.vim'
-Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'alfredodeza/coveragepy.vim'
 Plugin 'aperezdc/vim-template'
+Plugin 'bling/vim-airline'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'gmarik/Vundle.vim'
+Plugin 'godlygeek/tabular'
+Plugin 'jmcantrell/vim-virtualenv'
+Plugin 'kien/ctrlp.vim'
+Plugin 'majutsushi/tagbar'
+Plugin 'rodjek/vim-puppet'
+Plugin 'scrooloose/syntastic'
+Plugin 'tpope/vim-fugitive'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
