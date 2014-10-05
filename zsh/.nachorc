@@ -186,7 +186,7 @@ pall() {
 }
 
 #puppet stuff
-alias puppet-lint-all='noglob find -name *.pp -exec puppet-lint --with-filename {} +;'
+alias puppet-lint-all='noglob find -name *.pp -exec puppet-lint --with-filename {} +'
 alias pla=puppet-lint-all
 
 # get the name of the branch we are on
