@@ -2,42 +2,6 @@
 WORKON_HOME=$HOME/.virtualenvs
 [[ -f /etc/bash_completion.d/virtualenvwrapper ]] && source /etc/bash_completion.d/virtualenvwrapper
 
-# Gets python binary from a virtualenv, or default python nif it does not exist
-function vefile() {
-  ve_python="$WORKON_HOME/$1/$2"
-  if [[ -e "$ve_python" ]]; then
-    echo $ve_python;
-  else
-    return 1
-  fi
-}
-
-function vepy() {
-  if ! vefile $1 bin/python; then
-    echo python
-  fi
-}
-
-function vepip() {
-  if ! vefile $1 bin/pip; then
-    echo pip
-  fi
-}
-
-function vebinalias() {
-  local bin=$1
-  if [ -n "$2" ]; then
-    local venv=$2
-  else
-    local venv=$1
-  fi
-  local vebin=$(vefile $venv bin/$bin)
-  if [ -n "$vebin" ]; then
-    alias $bin=$vebin
-  fi
-}
-
-# Fast workon virtualenv and dir selector
 function wo() {
   local base_dir="$HOME/src"
   local project=$1
@@ -53,7 +17,9 @@ function wo() {
     deactivate
   fi
 
-  if  vefile $project . >/dev/null; then
+  if [ -r "$HOME/.local/venvs/$project" ]; then
+    . "$HOME/.local/venvs/$project/bin/activate"
+  elif [ -r "$HOME/.virtualenvs/$project" ]; then
     workon $project
   fi
 }
@@ -107,16 +73,11 @@ PIGNACIO_REPOS="$HOME/src/pignacio"
 
 alias current_git_root='git rev-parse --show-toplevel'
 alias pylint='pylint -d C0111'
-alias gifmaker="$(vepy gifmaker) $PIGNACIO_REPOS/gifmaker/src/gifmaker.py"
-alias downchan="$(vepy downchan) $PIGNACIO_REPOS/downchan/src/downchan.py"
-alias beet-playlist="$(vepy beet-playlist) $PIGNACIO_REPOS/beet-playlist/src/main.py"
 alias bp='beet-playlist'
 alias rp8='p8 $(current_git_root)'
 alias p8b='p8 | grep -v blank'
 alias plt='PYTHONPATH=$(readlink -f .) pl ../test'
 
-for bin in chorddb issue2branch youtube-dl beet; do
-  vebinalias $bin
 # Sudo wrapped binaries:
 for bin in apt-get puppet tomb lxc-start lxc-stop lxc-create lxc-destroy lxc-info lxc-ls lxc-console; do
   alias $bin="sudo $bin"
