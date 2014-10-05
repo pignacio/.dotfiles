@@ -63,7 +63,6 @@ _wo_find() {
 }
 
 
-alias apt-get='sudo apt-get'
 alias mee='mvn eclipse:eclipse'
 alias ap='readlink -f'
 
@@ -102,15 +101,12 @@ alias djrunserver='djcompress; ./manage.py runserver'
 
 alias phpcheck='for x in $(find -name "*.php"); do php -l $x; done'
 
-alias puppet='sudo puppet'
-
 source $HOME/.gitrmb
 
 PIGNACIO_REPOS="$HOME/src/pignacio"
 
 alias current_git_root='git rev-parse --show-toplevel'
 alias pylint='pylint -d C0111'
-alias tomb='sudo tomb'
 alias gifmaker="$(vepy gifmaker) $PIGNACIO_REPOS/gifmaker/src/gifmaker.py"
 alias downchan="$(vepy downchan) $PIGNACIO_REPOS/downchan/src/downchan.py"
 alias beet-playlist="$(vepy beet-playlist) $PIGNACIO_REPOS/beet-playlist/src/main.py"
@@ -121,6 +117,9 @@ alias plt='PYTHONPATH=$(readlink -f .) pl ../test'
 
 for bin in chorddb issue2branch youtube-dl beet; do
   vebinalias $bin
+# Sudo wrapped binaries:
+for bin in apt-get puppet tomb lxc-start lxc-stop lxc-create lxc-destroy lxc-info lxc-ls lxc-console; do
+  alias $bin="sudo $bin"
 done
 
 # pep8-all function
