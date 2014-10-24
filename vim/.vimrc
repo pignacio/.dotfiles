@@ -30,6 +30,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'rodjek/vim-puppet'
 Plugin 'scrooloose/syntastic'
+Plugin 'tejr/vim-nagios'
 Plugin 'tpope/vim-fugitive'
 
 " All of your Plugins must be added before the following line
