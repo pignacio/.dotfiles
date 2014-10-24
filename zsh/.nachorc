@@ -79,7 +79,8 @@ alias p8b='p8 | grep -v blank'
 alias plt='PYTHONPATH=$(readlink -f .) pl ../test'
 
 # Sudo wrapped binaries:
-for bin in apt-get puppet tomb lxc-start lxc-stop lxc-create lxc-destroy lxc-info lxc-ls lxc-console; do
+for bin in apt-get puppet tomb lxc-start lxc-stop lxc-create lxc-destroy \
+    lxc-info lxc-ls lxc-console lxc-cgroup; do
   alias $bin="sudo $bin"
 done
 

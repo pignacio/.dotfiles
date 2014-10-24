@@ -37,5 +37,6 @@ if is_installed lxc; then
   add_sudoers_no_pass_command $(which lxc-console)
   add_sudoers_no_pass_command $(which lxc-info)
   add_sudoers_no_pass_command $(which lxc-ls)
+  add_sudoers_no_pass_command $(which lxc-cgroup)
 fi
 
