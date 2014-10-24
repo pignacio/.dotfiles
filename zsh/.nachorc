@@ -59,7 +59,7 @@ compdef _git gmnf=git-merge
 alias aptana='nohup $HOME/opt/aptana/AptanaStudio3 -data $HOME/workspaces/aptana >/dev/null 2>&1 &'
 alias chromium='nohup chromium-browser >>$HOME/.logs/chromium.out 2>>$HOME/.logs/chromium.err &'
 alias incognito='chromium-browser --incognito'
-alias w-chromium='nohup chromium-browser --user-data-dir=$HOME/.work/chromium >>/dev/null 2>&1'
+alias w-chromium='chromium-browser --user-data-dir=$HOME/.work/chromium'
 alias webogram='chromium-browser --user-data-dir=$HOME/.webogram >/dev/null 2>&1'
 
 alias djcompress='./manage.py collectstatic --noinput; time ./manage.py compress'
