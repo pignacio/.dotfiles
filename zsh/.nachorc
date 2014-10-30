@@ -17,7 +17,9 @@ function wo() {
     deactivate
   fi
 
-  if [ -r "$HOME/.local/venvs/$project" ]; then
+  if [ -r "$project_dir/env" ]; then
+    . "$project_dir/env/bin/activate"
+  elif [ -r "$HOME/.local/venvs/$project" ]; then
     . "$HOME/.local/venvs/$project/bin/activate"
   elif [ -r "$HOME/.virtualenvs/$project" ]; then
     workon $project
