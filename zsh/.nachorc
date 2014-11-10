@@ -11,7 +11,12 @@ function wo() {
     return 1
   fi
 
-  cd "$project_dir"
+  manage=$(find $project_dir -maxdepth 2 -name manage.py | head -1)
+  if [ -n "$manage" ]; then
+    cd $(dirname $manage);
+  else
+    cd "$project_dir";
+  fi
 
   if [[ ! -z "$VIRTUAL_ENV" ]]; then
     deactivate
