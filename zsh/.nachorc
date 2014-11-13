@@ -79,6 +79,7 @@ function djpylint() {
     pylint $app -r n --ignore=migrations $*
   done
 }
+alias djmakemessages='./manage.py makemessages --no-wrap --no-location '
 
 # General stuff
 alias ap='readlink -f'
