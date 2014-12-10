@@ -46,3 +46,4 @@ $CLONE_DIR/git/install.sh
 $CLONE_DIR/vim/install.sh
 $CLONE_DIR/sudoers/install.sh
 $CLONE_DIR/pipsi/install.sh
+$CLONE_DIR/compleat/install.sh
