@@ -45,6 +45,7 @@ alias gpt='gp; gp --tags'
 alias grb='git rebase'
 alias grbi='git rebase -i'
 alias prmb='git checkout master; git pull; rmb'
+alias grmb='git branch --merged | grep -v -e develop -e master -e "*" | xargs git branch -d'
 
 gmnf() {
   if [[ -z "$1" ]]; then
