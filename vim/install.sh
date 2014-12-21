@@ -18,7 +18,7 @@ else
   fc-cache
 fi
 
-for extension in py; do
+for extension in py html; do
   src="$CLONE_DIR/vim/files/template.$extension"
   dst="$HOME/.vim-template:*.$extension"
   if [[ ! -e "$dst" ]]; then
