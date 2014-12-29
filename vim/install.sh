@@ -27,4 +27,11 @@ for extension in py html; do
   fi
 done
 
-
+YCM_INSTALL_FLAG=$FLAGS_DIR/vim-ycm-install
+if [[ ! -f "$YCM_INSTALL_FLAG" ]]; then
+  log_title "Installing YouCompleteMe"
+  (cd ~/.vim/bundle/YouCompleteMe && ./install.sh --clang-completer)
+  touch $YCM_INSTALL_FLAG
+else
+  log_info "YouCompleteMe is already installed"
+fi

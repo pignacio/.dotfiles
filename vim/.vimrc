@@ -32,6 +32,7 @@ Plugin 'rodjek/vim-puppet'
 Plugin 'scrooloose/syntastic'
 Plugin 'tejr/vim-nagios'
 Plugin 'tpope/vim-fugitive'
+Plugin 'valloric/YouCompleteMe'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -111,3 +112,13 @@ map <leader>k :tabn <cr>
 
 " sort mapping
 map <leader>s :sort <cr>
+
+" syntastic for c++11
+let g:syntastic_cpp_compiler_options = ' -std=c++11'
+
+" so jedi does not step in youcompleteme toes
+let g:jedi#popup_select_first = 0
+let g:jedi#popup_on_dot = 0
+
+" global YCM conficuration
+let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
