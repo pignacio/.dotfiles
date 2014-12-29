@@ -1,5 +1,8 @@
 apt-file
+build-essential
+cmake
 exuberant-ctags
 htop
+python-dev
 vim
 wget
