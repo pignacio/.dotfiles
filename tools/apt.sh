@@ -16,5 +16,5 @@ install() {
 }
 
 is_installed() {
-  dpkg -l "$1" >> /dev/null
+  dpkg -l "$1" | grep "^ii" >> /dev/null
 }
