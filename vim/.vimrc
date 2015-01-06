@@ -128,3 +128,6 @@ let g:email = 'rossi.ignacio@gmail.com'
 
 " default license
 let g:license = 'GPLv3'
+
+" cpplint results in preview window
+noremap <leader>c :let cloutput=system('cpplint.py --root=src --filter=-legal/copyright '.expand('%'))<cr>:new<cr>:put =cloutput<cr>:q!
