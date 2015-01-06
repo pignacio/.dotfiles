@@ -122,3 +122,9 @@ let g:jedi#popup_on_dot = 0
 
 " global YCM conficuration
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+
+" email
+let g:email = 'rossi.ignacio@gmail.com'
+
+" default license
+let g:license = 'GPLv3'
