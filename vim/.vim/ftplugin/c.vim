@@ -6,7 +6,7 @@ setlocal expandtab
 
 set nosmartindent
 
-set cino=N-s
+set cino=N-s,g1,h3
 
 " Warning and Danger sections
 let &colorcolumn="80,".join(range(120,999),",")
