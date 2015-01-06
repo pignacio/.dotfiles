@@ -24,10 +24,10 @@ function wo() {
 
   if [ -r "$project_dir/env" ]; then
     . "$project_dir/env/bin/activate"
-  elif [ -r "$HOME/.local/venvs/$project" ]; then
-    . "$HOME/.local/venvs/$project/bin/activate"
   elif [ -r "$HOME/.virtualenvs/$project" ]; then
     workon $project
+  elif [ -r "$HOME/.local/venvs/$project" ]; then
+    . "$HOME/.local/venvs/$project/bin/activate"
   fi
 }
 
