@@ -3,6 +3,8 @@ build-essential
 cmake
 exuberant-ctags
 htop
+nodejs
+nodejs-legacy
 python-dev
 vim
 wget
