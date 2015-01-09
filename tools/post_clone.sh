@@ -48,3 +48,4 @@ $CLONE_DIR/sudoers/install.sh
 $CLONE_DIR/pipsi/install.sh
 $CLONE_DIR/compleat/install.sh
 $CLONE_DIR/npm/install.sh
+$CLONE_DIR/google_mock/install.sh
