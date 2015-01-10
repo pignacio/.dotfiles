@@ -17,3 +17,13 @@ else
   log_title "Linking compiled gmock/gtest libraries"
   find /usr/src/gmock -name "*.a" -exec sudo ln -s {} /usr/lib \;
 fi
+
+CPPLINT_BINARY="$HOME/.local/bin/cpplint.py"
+
+if [ -e "$CPPLINT_BINARY" ]; then
+  log_info "cpplint.py is already installed"
+else
+  log_title "Installing cpplint.py"
+  wget -O"$CPPLINT_BINARY" "http://google-styleguide.googlecode.com/svn/trunk/cpplint/cpplint.py"
+fi
+
