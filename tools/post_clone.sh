@@ -11,7 +11,7 @@ backupAndLink() {
   subdir=$2
   fpath="$HOME/$fname"
   src=$CLONE_DIR/$subdir/$fname
-  log_title "Configuration file for $subdir: $fname"
+  log_info "Configuration file for $subdir: $fname"
   if [ -e "$fpath" -o -h "$fpath" ]; then
     if [[ "$(readlink -f $fpath)" == "$(readlink -f $src)" ]]; then
       log_info "$fpath already points to $src. Skipping"

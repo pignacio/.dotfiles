@@ -6,10 +6,10 @@ install() {
   local X=0
   for package; do
     (( X=$X+1 ))
-    log_title "Installing package $X/$#: $package";
     if is_installed "$package"; then
       log_info "'$package' is already installed"
     else
+      log_title "Installing package $X/$#: $package";
       sudo apt-get install -y $package;
     fi
   done
