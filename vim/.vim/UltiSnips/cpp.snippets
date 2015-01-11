@@ -1,0 +1,18 @@
+# namespace
+snippet ns
+namespace ${1:`vim_snippets#Filename('', 'my')`} {
+${0}
+}  // namespace $1
+endsnippet
+
+# class
+snippet cl
+class ${1:`vim_snippets#Filename('$1', 'name')`} {
+ public:
+    $1(${2});
+    ~$1();
+
+ private:
+    ${0:/* data */}
+};
+endsnippet

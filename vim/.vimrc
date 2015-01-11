@@ -25,15 +25,17 @@ Plugin 'bling/vim-airline'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'godlygeek/tabular'
+Plugin 'honza/vim-snippets'
 Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'kien/ctrlp.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'raimondi/delimitmate'
 Plugin 'rodjek/vim-puppet'
 Plugin 'scrooloose/syntastic'
+Plugin 'sirver/ultisnips'
 Plugin 'tejr/vim-nagios'
 Plugin 'tpope/vim-fugitive'
-Plugin 'valloric/YouCompleteMe'
+Plugin 'valloric/youcompleteme'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -132,3 +134,8 @@ let g:license = 'GPLv3'
 
 " cpplint results in preview window
 noremap <leader>c :let cloutput=system('cpplint.py --root=src --filter=-legal/copyright '.expand('%'))<cr>:new<cr>:put =cloutput<cr>:q!
+
+" UltiSnips configuration
+let g:UltiSnipsExpandTrigger="<c-a>"
+let g:UltiSnipsJumpForwardTrigger="<c-a>"
+let g:UltiSnipsJumpBackwardTrigger="<c-s>"
