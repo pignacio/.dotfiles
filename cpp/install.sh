@@ -34,3 +34,4 @@ install_cpplint() {
 
 install_googe_mock
 install_cpplint
+install clang-format-3.5

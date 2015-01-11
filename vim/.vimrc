@@ -30,6 +30,7 @@ Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'kien/ctrlp.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'raimondi/delimitmate'
+Plugin 'rhysd/vim-clang-format'
 Plugin 'rodjek/vim-puppet'
 Plugin 'scrooloose/syntastic'
 Plugin 'sirver/ultisnips'
@@ -139,3 +140,7 @@ noremap <leader>c :let cloutput=system('cpplint.py --root=src --filter=-legal/co
 let g:UltiSnipsExpandTrigger="<c-a>"
 let g:UltiSnipsJumpForwardTrigger="<c-a>"
 let g:UltiSnipsJumpBackwardTrigger="<c-s>"
+
+" clang-format
+map <C-I> :pyf /usr/share/vim/addons/syntax/clang-format-3.5.py<CR>
+imap <C-I> <ESC>:pyf /usr/share/vim/addons/syntax/clang-format-3.5.py<CR>i
