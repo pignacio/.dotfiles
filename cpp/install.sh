@@ -9,6 +9,15 @@ log_title "Installing cpp stuff"
 install_googe_mock() {
   install google-mock
 
+  if [ ! -e "/usr/src/gtest" ]; then
+    log_title "Soft linking gtest sources"
+    sudo ln -s /usr/src/gmock/gtest /usr/src
+  fi
+  if [ ! -e "/usr/include/gtest" ]; then
+    log_title "Soft linking gtest includes"
+    sudo ln -s /usr/src/gmock/gtest/include/gtest /usr/include
+  fi
+
   if [ -e "/usr/lib/libgmock.a" ]; then
     log_info "Google mock is already compiled."
   else
