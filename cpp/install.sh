@@ -39,6 +39,7 @@ install_cpplint() {
     log_title "Installing cpplint.py"
     wget -O"$CPPLINT_BINARY" "http://google-styleguide.googlecode.com/svn/trunk/cpplint/cpplint.py"
   fi
+  [ -x $CPPLINT_BINARY ] || chmod +x $CPPLINT_BINARY
 }
 
 install_googe_mock
