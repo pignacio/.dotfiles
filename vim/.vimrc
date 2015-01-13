@@ -142,5 +142,6 @@ let g:UltiSnipsJumpForwardTrigger="<c-a>"
 let g:UltiSnipsJumpBackwardTrigger="<c-s>"
 
 " clang-format
-map <C-I> :pyf /usr/share/vim/addons/syntax/clang-format-3.5.py<CR>
+map <C-I> :%pyf /usr/share/vim/addons/syntax/clang-format-3.5.py<CR>
 imap <C-I> <ESC>:pyf /usr/share/vim/addons/syntax/clang-format-3.5.py<CR>i
+vmap <C-I> :pyf /usr/share/vim/addons/syntax/clang-format-3.5.py<CR>
