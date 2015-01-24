@@ -49,3 +49,4 @@ $CLONE_DIR/pipsi/install.sh
 $CLONE_DIR/compleat/install.sh
 $CLONE_DIR/npm/install.sh
 $CLONE_DIR/cpp/install.sh
+$CLONE_DIR/heroku/install.sh
