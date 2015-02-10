@@ -199,4 +199,37 @@ export TERM=xterm-256color
 # Interactive comments
 setopt interactivecomments
 
+function pj() {
+while read -r line; do
+  if [ -n "$VIRTUAL_ENV" ]; then
+    echo "Deactivating '$VIRTUAL_ENV'"
+    deactivate
+  fi
+  local exec_prefix="@"
+  local cd_prefix="cd:"
+  local workon_prefix="workon:"
+  local source_prefix="source:"
+  if [[ "$line" = $exec_prefix* ]]; then
+    local line=${line#$exec_prefix};
+    local toexec='';
+    if [[ "$line" = $cd_prefix* ]]; then
+      toexec="cd '${line#$cd_prefix}'"
+    elif [[ "$line" = $workon_prefix* ]]; then
+      toexec="workon '${line#$workon_prefix}'"
+    elif [[ "$line" = $source_prefix* ]]; then
+      toexec="source '${line#$source_prefix}'"
+    else
+      echo "Wrong execution line: $exec_prefix$line"
+    fi
+    if [ -n "${toexec}" ]; then
+      echo "Executing: $toexec"
+      eval $toexec
+    fi
+  else
+    echo "$line";
+  fi
+done < <(python /home/ignacio/.dotfiles_scripts/project_jump.py "$@")
+}
+
+
 # vim: ft=zsh
