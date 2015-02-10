@@ -138,3 +138,6 @@ let g:license = 'GPLv3'
 let g:UltiSnipsExpandTrigger="<c-a>"
 let g:UltiSnipsJumpForwardTrigger="<c-a>"
 let g:UltiSnipsJumpBackwardTrigger="<c-s>"
+
+" Enable puppet's future parser
+let g:syntastic_puppet_puppet_args = '--parser future'
