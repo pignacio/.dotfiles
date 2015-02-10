@@ -97,6 +97,10 @@ let g:tagbar_autofocus = 1
 " Ignores for CtrlP
 set wildignore+=*.pyc
 
+" Show hidden files in ctrlp, except bundle
+let g:ctrlp_show_hidden = 1
+let g:ctrlp_custom_ignore = '\v[\/](bundle|target|dist|.*egg-info)|(\.(swp|bzr|git|svn))$'
+
 set foldlevelstart=0
 
 " Open splits to the right
