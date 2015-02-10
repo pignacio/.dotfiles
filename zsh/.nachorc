@@ -68,6 +68,7 @@ source $HOME/.gitrmb
 alias chromium='nohup chromium-browser >>$HOME/.logs/chromium.out 2>>$HOME/.logs/chromium.err &'
 alias incognito='chromium-browser --incognito'
 alias w-chromium='chromium-browser --user-data-dir=$HOME/.work/chromium'
+alias df-chromium='chromium-browser --user-data-dir=$HOME/.df/chromium'
 alias webogram='chromium-browser --user-data-dir=$HOME/.webogram >/dev/null 2>&1'
 
 
