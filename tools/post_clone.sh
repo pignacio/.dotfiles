@@ -51,3 +51,4 @@ $CLONE_DIR/npm/install.sh
 $CLONE_DIR/cpp/install.sh
 $CLONE_DIR/heroku/install.sh
 $CLONE_DIR/scripts/install.sh
+$CLONE_DIR/gems/install.sh
