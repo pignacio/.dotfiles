@@ -1,0 +1,3 @@
+pip (install | uninstall <installed_package> | freeze);
+
+installed_package = ! pip freeze;

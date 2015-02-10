@@ -1,0 +1,2 @@
+fab [<option>];
+option = ! fab -l | tail -n+4
