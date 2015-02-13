@@ -8,5 +8,5 @@ if is_installed heroku-toolbelt; then
   log_info "heroku-toolbelt is already installed"
 else
   log_title "Installing heroku-toolbelt"
-  wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh
+  wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sudo sh
 fi
