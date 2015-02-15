@@ -1,5 +1,5 @@
 #!/bin/bash
-set -u;
+set -u; set -e;
 
 . $CLONE_DIR/tools/log.sh;
 . $CLONE_DIR/tools/apt.sh;
