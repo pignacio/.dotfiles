@@ -229,7 +229,7 @@ while read -r line; do
   else
     echo "$line";
   fi
-done < <(python /home/ignacio/.dotfiles_scripts/project_jump.py "$@")
+done < <(python $HOME/.dotfiles_scripts/project_jump.py "$@")
 }
 
 
