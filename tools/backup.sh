@@ -18,6 +18,6 @@ backupAndLink() {
     log_info "Found '$fpath'. Moving to $rpath"
     mv $fpath $rpath
   fi
-  log_info "Linking $fpath -> $src"
+  log_title "Linking $fpath -> $src"
   ln -s $src $fpath
 }
