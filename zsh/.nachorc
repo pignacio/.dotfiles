@@ -44,7 +44,7 @@ alias gk='gitk --all'
 alias gpt='gp; gp --tags'
 alias grb='git rebase'
 alias grbi='git rebase -i'
-alias prmb='git checkout master; git pull; rmb'
+alias prmb='git checkout master; git pull; grmb'
 alias grmb='git branch --merged | grep -v -e develop -e master -e "*" | xargs git branch -d'
 
 gmnf() {
@@ -61,8 +61,6 @@ gmnf() {
   fi
 }
 compdef _git gmnf=git-merge
-
-source $HOME/.gitrmb
 
 # Chromium profiles
 alias chromium='nohup chromium-browser >>$HOME/.logs/chromium.out 2>>$HOME/.logs/chromium.err &'
