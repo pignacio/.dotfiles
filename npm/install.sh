@@ -1,7 +1,8 @@
 #!/bin/bash
 set -u
 
-. $CLONE_DIR/tools/log.sh
+. $CLONE_DIR/tools/log.sh;
+. $CLONE_DIR/tools/backup.sh;
 
 npm_install_binary () {
   local package=$1
@@ -20,3 +21,5 @@ npm_install_binary () {
 }
 
 npm_install_binary jshint
+backupAndLink .jshintrc npm
+
