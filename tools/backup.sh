@@ -14,7 +14,7 @@ backupAndLink() {
       log_info "$fpath already points to $src. Skipping"
       return
     fi
-    rpath="$fpath.old"
+    rpath="$fpath.old.$RANDOM"
     log_info "Found '$fpath'. Moving to $rpath"
     mv $fpath $rpath
   fi
