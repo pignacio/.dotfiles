@@ -2,7 +2,14 @@
 
 set -u
 
-. $CLONE_DIR/tools/log.sh
+. $CLONE_DIR/tools/log.sh;
+. $CLONE_DIR/tools/backup.sh;
+
+
+log_title "Replacing existing vim config..."
+backupAndLink .vimrc vim
+backupAndLink .vim vim
+
 
 log_title "Installing missing vim plugins"
 vim +PluginInstall +qa

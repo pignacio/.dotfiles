@@ -2,6 +2,7 @@
 set -u
 
 . $CLONE_DIR/tools/log.sh;
+. $CLONE_DIR/tools/backup.sh;
 
 install_oh_my_zsh() {
   if [ ! -d ~/.oh-my-zsh ]; then
@@ -41,6 +42,13 @@ set_zsh_as_default_shell() {
   fi
 }
 
+replace_default_config() {
+  log_title "Replacing oh-my-zsh config"
+  backupAndLink .zshrc zsh
+  backupAndLink .nachorc zsh
+}
+
 install_oh_my_zsh
 patch_flazz
 set_zsh_as_default_shell
+replace_default_config
