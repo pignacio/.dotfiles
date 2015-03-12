@@ -232,5 +232,7 @@ while read -r line; do
 done < <(python $HOME/.dotfiles_scripts/project_jump.py "$@")
 }
 
+alias initvirtualenv="python $HOME/.dotfiles_scripts/init_virtualenv.py"
+
 
 # vim: ft=zsh
