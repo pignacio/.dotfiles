@@ -37,6 +37,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'sirver/ultisnips'
 Plugin 'tejr/vim-nagios'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-unimpaired'
 Plugin 'valloric/youcompleteme'
 
 " All of your Plugins must be added before the following line
