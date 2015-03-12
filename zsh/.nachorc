@@ -114,6 +114,8 @@ function pl() {
 
 # run Nosetests
 function nose() {
+  echo "Removing .pyc files"
+  find -name "*.pyc" -delete
   if [[ -n "${1:-}" && -e "$1" ]]; then
     test_folder=$1
     shift
