@@ -72,7 +72,14 @@ alias webogram='chromium-browser --user-data-dir=$HOME/.webogram >/dev/null 2>&1
 
 # Django stuff
 alias djcompress='./manage.py collectstatic --noinput; time ./manage.py compress'
-alias djrunserver='djcompress; ./manage.py runserver'
+function djrunserver() {
+  while true; do
+    djcompress;
+    ./manage.py runserver "$@";
+    echo "Restarting in 5s";
+    sleep 5s;
+  done
+}
 function djpylint() {
   for app in $(find . -mindepth 2 -maxdepth 2 -name "__init__.py" | cut -d "/" -f 2); do
     echo "Running pylint for '$app'"
@@ -87,6 +94,7 @@ alias bp='beet-playlist'
 alias rp8='p8 $(current_git_root)'
 alias p8b='p8 | grep -v blank'
 alias plt='PYTHONPATH=$(readlink -f .) pl ../test'
+
 
 # Sudo wrapped binaries:
 for bin in apt-get puppet tomb lxc-start lxc-stop lxc-create lxc-destroy \
