@@ -1,4 +1,44 @@
-# namedtuple
-snippet nt
+snippet nt "namedtuple"
 ${1:TupleName} = collections.namedtuple('$1', ${2:fields})
+endsnippet
+
+snippet future "__future__ definition"
+from __future__ import absolute_imports, unicode_literals, division
+endsnippet
+
+snippet logger "logger definition"
+logger = logging.getLogger(__name__)  # pylint: disable=invalid-name
+endsnippet
+
+snippet model "Django model"
+class ${1:MyModel}(models.Model):
+    $0
+
+    updated_at = models.DateTimeField(auto_now=True, editable=False)
+    created_at = models.DateTimeField(auto_now_add=True, editable=False)
+
+    class Meta(object):  # pylint: disable=too-few-public-methods
+        db_table = '${1/(.)?([A-Z])/(?1:$1_\l$2:\l$2)/g}'
+        verbose_name = '${1/(.)?([A-Z])/(?1:$1 \l$2:\l$2)/g}'
+        verbose_name_plural = '${1/(.)?([A-Z])/(?1:$1 \l$2:\l$2)/g}s'
+endsnippet
+
+snippet charf "CharField"
+models.CharField(_('$1'), max_length=${2:255})
+endsnippet
+
+snippet fkey "FoireignKey"
+models.ForeignKey($1)
+endsnippet
+
+snippet args "star-args" i
+*args${1:,}${0}
+endsnippet
+
+snippet kwargs "star-kwargs" i
+**kwargs${1:,}${0}
+endsnippet
+
+snippet akw "star-args-kwargs" i
+*args, **kwargs${1:,}${0}
 endsnippet
