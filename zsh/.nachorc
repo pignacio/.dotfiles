@@ -2,40 +2,6 @@
 WORKON_HOME=$HOME/.virtualenvs
 [[ -f /etc/bash_completion.d/virtualenvwrapper ]] && source /etc/bash_completion.d/virtualenvwrapper
 
-function wo() {
-  local base_dir="$HOME/src"
-  local project=$1
-  local project_dir=$(cat <(_wo_find "$base_dir" 1 "$project") <(_wo_find "$base_dir" 2 "$project") | head -1)
-  if [[ -z "$project_dir" ]]; then
-    echo "Could not find '$project' in '$base_dir'"
-    return 1
-  fi
-
-  manage=$(find $project_dir -maxdepth 2 -name manage.py | head -1)
-  if [ -n "$manage" ]; then
-    cd $(dirname $manage);
-  else
-    cd "$project_dir";
-  fi
-
-  if [[ ! -z "$VIRTUAL_ENV" ]]; then
-    deactivate
-  fi
-
-  if [ -r "$project_dir/env" ]; then
-    . "$project_dir/env/bin/activate"
-  elif [ -r "$HOME/.virtualenvs/$project" ]; then
-    workon $project
-  elif [ -r "$HOME/.local/venvs/$project" ]; then
-    . "$HOME/.local/venvs/$project/bin/activate"
-  fi
-}
-
-_wo_find() {
-  find -L "$1" -mindepth "$2" -maxdepth "$2" -type d -name "$3"
-}
-
-
 # Git stuff
 alias 'gpf!'='git push --force'
 alias current_git_root='git rev-parse --show-toplevel'
