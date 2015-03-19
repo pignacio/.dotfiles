@@ -20,6 +20,7 @@ _PACKAGES = (
 
 _DJANGO_PACKAGES = (
     'pylint-django',
+    'pyinotify',
 )
 
 
