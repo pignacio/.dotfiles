@@ -2,4 +2,4 @@ pj --list;
 pj --compleat;
 pj <project>;
 
-project = ! python ~/.dotfiles_scripts/project_jump.py --compleat;
+project = ! project_jump --compleat;
