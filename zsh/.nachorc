@@ -71,15 +71,6 @@ alias webogram='chromium-browser --user-data-dir=$HOME/.webogram >/dev/null 2>&1
 
 
 # Django stuff
-alias djcompress='./manage.py collectstatic --noinput; time ./manage.py compress'
-function djrunserver() {
-  while true; do
-    djcompress;
-    ./manage.py runserver "$@";
-    echo "Restarting in 5s";
-    sleep 5s;
-  done
-}
 function djpylint() {
   for app in $(find . -mindepth 2 -maxdepth 2 -name "__init__.py" | cut -d "/" -f 2); do
     echo "Running pylint for '$app'"

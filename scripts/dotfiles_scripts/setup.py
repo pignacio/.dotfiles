@@ -58,6 +58,7 @@ setup(
             'project_jump=dotfiles_scripts.project_jump:main',
             'initvirtualenv=dotfiles_scripts.init_virtualenv:main',
             'ghclone=dotfiles_scripts.github_clone:main',
+            'djrunserver=dotfiles_scripts.django_runserver:main',
         ],
     },
 )
