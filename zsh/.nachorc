@@ -62,17 +62,6 @@ gmnf() {
 }
 compdef _git gmnf=git-merge
 
-# Clone from github
-ghclone() {
-  if [[ -z "$1" ]]; then
-    echo "No repo supplied"
-    return 1
-  fi
-  repo=$1;
-  shift;
-  git clone "git@github.com:${repo}" "$@";
-}
-
 # Chromium profiles
 alias chromium='nohup chromium-browser >>$HOME/.logs/chromium.out 2>>$HOME/.logs/chromium.err &'
 alias incognito='chromium-browser --incognito'
