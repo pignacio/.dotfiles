@@ -17,8 +17,8 @@ backupAndLink() {
     fi
     rpath="$dst.old.$RANDOM"
     log_info "Found '$dst'. Moving to $rpath"
-    mv $dst $rpath
+    mv "$dst" "$rpath"
   fi
   log_title "Linking $dst -> $src"
-  ln -s $src $dst
+  ln -s "$src" "$dst"
 }
