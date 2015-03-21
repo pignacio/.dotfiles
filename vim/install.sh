@@ -25,13 +25,11 @@ else
   fc-cache
 fi
 
-for extension in py html cpp h sh; do
-  src="$CLONE_DIR/vim/files/template.$extension"
-  dst="$HOME/.vim-template:*.$extension"
-  if [[ ! -e "$dst" ]]; then
-    log_title "Setting up vim template for $extension"
-    ln -s "$src" "$dst"
-  fi
+log_title "Installing vim templates"
+for template_file in $(ls $CLONE_DIR/vim/files/templates); do
+  src="$CLONE_DIR/vim/files/templates/$template_file"
+  dst="$HOME/.$template_file"
+  backupAndLink "$src" "$dst"
 done
 
 YCM_INSTALL_FLAG=$FLAGS_DIR/vim-ycm-install
