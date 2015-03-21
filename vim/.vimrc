@@ -159,3 +159,6 @@ let g:syntastic_check_on_wq = 0
 
 " disable delimitMate pairs in htmldjango
 au FileType htmldjango let b:delimitMate_matchpairs = ""
+
+" custom vim-templates dir
+let g:templates_directory = '~/.vim/templates'

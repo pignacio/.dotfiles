@@ -25,13 +25,6 @@ else
   fc-cache
 fi
 
-log_title "Installing vim templates"
-for template_file in $(ls $CLONE_DIR/vim/files/templates); do
-  src="$CLONE_DIR/vim/files/templates/$template_file"
-  dst="$HOME/.$template_file"
-  backupAndLink "$src" "$dst"
-done
-
 YCM_INSTALL_FLAG=$FLAGS_DIR/vim-ycm-install
 if [[ ! -f "$YCM_INSTALL_FLAG" ]]; then
   log_title "Installing YouCompleteMe"
