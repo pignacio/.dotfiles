@@ -44,8 +44,8 @@ set_zsh_as_default_shell() {
 
 replace_default_config() {
   log_title "Replacing oh-my-zsh config"
-  backupAndLink .zshrc zsh
-  backupAndLink .nachorc zsh
+  backupAndLink $CLONE_DIR/zsh/.zshrc ~/.zshrc
+  backupAndLink $CLONE_DIR/zsh/.nachorc ~/.nachorc
 }
 
 install_oh_my_zsh

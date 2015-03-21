@@ -7,8 +7,8 @@ set -u
 
 
 log_title "Replacing existing vim config..."
-backupAndLink .vimrc vim
-backupAndLink .vim vim
+backupAndLink $CLONE_DIR/vim/.vimrc ~/.vimrc
+backupAndLink $CLONE_DIR/vim/.vim ~/.vim
 
 
 log_title "Installing missing vim plugins"

@@ -21,5 +21,5 @@ npm_install_binary () {
 }
 
 npm_install_binary jshint
-backupAndLink .jshintrc npm
 
+backupAndLink $CLONE_DIR/npm/.jshintrc ~/.jshintrc
