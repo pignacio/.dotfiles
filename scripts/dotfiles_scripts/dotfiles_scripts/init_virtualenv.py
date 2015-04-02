@@ -36,7 +36,7 @@ def main():
     packages = list(_PACKAGES)
     if options.django:
         packages.extend(_DJANGO_PACKAGES)
-    pip.main(['install'] + packages)
+    pip.main(['install', '--upgrade'] + packages)
 
 
 if __name__ == '__main__':
