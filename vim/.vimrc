@@ -160,6 +160,12 @@ let g:syntastic_always_populate_loc_list = 1
 " let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 
+" Use all python checkers
+let g:syntastic_python_checkers = ['python', 'pep8', 'pylint']
+
+" Use rstcheck
+let g:syntastic_rst_checkers = ['rstcheck']
+
 " disable delimitMate pairs in htmldjango
 au FileType htmldjango let b:delimitMate_matchpairs = ""
 
