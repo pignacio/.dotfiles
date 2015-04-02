@@ -53,9 +53,12 @@ def main():
     runserver.extend(sys.argv[1:])
 
     while True:
+        logger.info('Collecting static files')
         subprocess.call(['python', manage_py, 'collectstatic', '--noinput'])
+        logger.info('Compressing')
         subprocess.call(['python', manage_py, 'compress'])
         try:
+            logger.info('Running server...')
             subprocess.call(runserver)
         except KeyboardInterrupt:
             # Allow Ctrl-Xing the server
