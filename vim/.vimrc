@@ -166,6 +166,9 @@ let g:syntastic_python_checkers = ['python', 'pep8', 'pylint']
 " Use rstcheck
 let g:syntastic_rst_checkers = ['rstcheck']
 
+" Aggregate errors
+let g:syntastic_aggregate_errors = 1
+
 " disable delimitMate pairs in htmldjango
 au FileType htmldjango let b:delimitMate_matchpairs = ""
 
