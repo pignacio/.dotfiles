@@ -7,5 +7,5 @@ setlocal expandtab
 set textwidth=79
 set formatoptions+=t
 
-let &colorcolumn="80,".join(range(120,999),",")
-highlight ColorColumn ctermbg=233 guibg=#2c2d27
+highlight ColorColumn ctermbg=200
+call matchadd('ColorColumn', '\%81v', 100)
