@@ -6,6 +6,11 @@ snippet future "__future__ definition"
 from __future__ import absolute_import, unicode_literals, division
 endsnippet
 
+snippet pfuture "__future__ definition with print"
+from __future__ import (absolute_import, unicode_literals, division,
+                        print_function)
+endsnippet
+
 snippet logger "logger definition"
 logger = logging.getLogger(__name__)  # pylint: disable=invalid-name
 endsnippet
