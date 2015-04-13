@@ -4,7 +4,7 @@ from __future__ import absolute_import, unicode_literals
 
 import argparse
 import logging
-import pip
+import subprocess
 
 
 logger = logging.getLogger(__name__)  # pylint: disable=invalid-name
@@ -33,10 +33,15 @@ def _get_arg_parser():
 
 def main():
     options = _get_arg_parser().parse_args()
+
+    # Upgrade pip
+    subprocess.call(['pip', 'install', '--upgrade', 'pip'])
+
     packages = list(_PACKAGES)
     if options.django:
         packages.extend(_DJANGO_PACKAGES)
-    pip.main(['install', '--upgrade'] + packages)
+
+    subprocess.call(['pip', 'install', '--upgrade', '--upgrade'] + packages)
 
 
 if __name__ == '__main__':
