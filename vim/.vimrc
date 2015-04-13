@@ -30,6 +30,8 @@ Plugin 'honza/vim-snippets'
 Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'kien/ctrlp.vim'
 Plugin 'majutsushi/tagbar'
+" Plugin 'pignacio/vim-yapf-format'
+set runtimepath+=$HOME/.vim/bundle/vim-yapf-format
 Plugin 'raimondi/delimitmate'
 Plugin 'rhysd/vim-clang-format'
 Plugin 'rodjek/vim-puppet'
@@ -174,3 +176,6 @@ au FileType htmldjango let b:delimitMate_matchpairs = ""
 
 " custom vim-templates dir
 let g:templates_directory = '~/.vim/templates'
+
+" yapf location
+let g:yapf_format_yapf_location = '~/src/yapf'

@@ -18,3 +18,8 @@ let g:syntastic_python_pylint_args = "-d C0111"
 map <buffer> <Leader>cs :Coveragepy show <CR>
 map <buffer> <Leader>cr :Coveragepy report <CR>
 map <buffer> <Leader>cx :Coveragepy session <CR>
+
+" yapf-format
+map <buffer> <C-o> :%YapfFormat<CR>
+imap <buffer> <C-o> <ESC>:YapfFormat<CR>i
+vmap <buffer> <C-o> :YapfFormat<CR>
