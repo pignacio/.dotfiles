@@ -37,13 +37,20 @@ models.ForeignKey($1)
 endsnippet
 
 snippet args "star-args" i
-*args${1:,}${0}
+*args${0}
 endsnippet
 
 snippet kwargs "star-kwargs" i
-**kwargs${1:,}${0}
+**kwargs${0}
 endsnippet
 
 snippet akw "star-args-kwargs" i
-*args, **kwargs${1:,}${0}
+*args, **kwargs${0}
+endsnippet
+
+snippet parser "argparse.Argumentparser"
+def _get_arg_parser():
+    parser = argparse.ArgumentParser()
+    ${0}
+    return parser
 endsnippet
