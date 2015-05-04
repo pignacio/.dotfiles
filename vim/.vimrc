@@ -162,6 +162,15 @@ let g:syntastic_always_populate_loc_list = 1
 " let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 
+" make syntastic passive by default
+let g:syntastic_mode_map = {
+    \ "mode": "acive",
+    \ "active_filetypes": [],
+    \ "passive_filetypes": ["python"] }
+
+" SyntasticCheck binding
+map <C-c> :w<CR>:SyntasticCheck<CR>
+
 " Use all python checkers
 let g:syntastic_python_checkers = ['python', 'pep8', 'pylint']
 
