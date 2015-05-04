@@ -1,0 +1,1 @@
+lxc-ls [-h | --active | --frozen | --running | -f | --fancy ] ...;

@@ -1,0 +1,4 @@
+lxc-start -h;
+lxc-start [ -d | -n <name> ] ...;
+
+name = ! sudo lxc-ls -1;
