@@ -1,0 +1,14 @@
+# Generic Tags
+snippet % "tag" i
+{% ${1} %}${2}
+endsnippet
+
+snippet %% "templatetag" i
+{% ${1:tag_name} %}
+	${2}
+{% end$1 %}
+endsnippet
+
+snippet { "variabletag" i
+{{ ${1} }}${2}
+endsnippet
