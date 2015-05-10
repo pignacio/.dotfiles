@@ -13,19 +13,6 @@ alias grbi='git rebase -i'
 alias prmb='git checkout master; git pull; grmb'
 alias grmb='git branch --merged | grep -v -e develop -e master -e "*" | xargs git branch -d'
 
-gmnf() {
-  if [[ -z "$1" ]]; then
-    echo "No branch supplied"
-    return 1
-  fi
-  branch=$1;
-  shift;
-  if (( $(git log $branch.. | wc -l ) > 0 )); then
-    echo "Para mergear $branch falta el rebase, papi";
-  else
-    git merge --no-ff $branch "$@"
-  fi
-}
 compdef _git gmnf=git-merge
 
 # Chromium profiles
