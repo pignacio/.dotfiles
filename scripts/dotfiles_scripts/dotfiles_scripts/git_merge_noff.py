@@ -70,6 +70,7 @@ def main():
     repo = git.Repo('.', search_parent_directories=True)
 
     branch = repo.branches[options.branch]
+    active_branch = repo.active_branch
 
     if options.into:
         to_merge = repo.active_branch
@@ -87,17 +88,16 @@ def main():
         print bright_yellow('Skipping tests')
         tests_passed = True
     else:
+        to_merge.checkout()
         tests_passed = _run_tests()
 
     if tests_passed:
         print bright_green('Merging "{}" into "{}"'.format(to_merge, base))
-        active_branch = repo.active_branch
-
         base.checkout()
         try:
             if subprocess.call(['git', 'merge', '--no-ff',
                                 to_merge.name]) != 0:
-                print bright_red('Something went wrong merging. '
+                print bright_red('Something went wrong while merging. '
                                  'Restoring original branch')
                 active_branch.checkout()
         except Exception:
@@ -105,6 +105,7 @@ def main():
             raise
     else:
         print bright_red('Tests FAILED! Not merging.')
+        active_branch.checkout()
 
 
 if __name__ == '__main__':
