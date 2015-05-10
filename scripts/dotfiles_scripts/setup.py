@@ -1,11 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+from __future__ import absolute_import, unicode_literals, division
 
-
-try:
-    from setuptools import setup
-except ImportError:
-    from distutils.core import setup
+from setuptools import setup, find_packages
 
 
 with open('README.rst') as readme_file:
@@ -19,10 +16,6 @@ requirements = [
   'pignacio_scripts',
 ]
 
-test_requirements = [
-    # TODO: put package test requirements here
-]
-
 setup(
     name='dotfiles_scripts',
     version='0.0.1',
@@ -31,11 +24,7 @@ setup(
     author="Ignacio Rossi",
     author_email='rossi.ignacio@gmail.com ',
     url='https://github.com/pignacio/dotfiles_scripts',
-    packages=[
-        'dotfiles_scripts',
-    ],
-    package_dir={'dotfiles_scripts':
-                 'dotfiles_scripts'},
+    packages=find_packages(exclude=['contrib', 'test*', 'docs']),
     include_package_data=True,
     install_requires=requirements,
     license='GPLv3',
@@ -53,7 +42,6 @@ setup(
         'Programming Language :: Python :: 3.4',
     ],
     test_suite='tests',
-    tests_require=test_requirements,
     entry_points={
         'console_scripts': [
             'project_jump=dotfiles_scripts.project_jump:main',
