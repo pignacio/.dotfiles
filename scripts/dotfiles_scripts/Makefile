@@ -6,9 +6,9 @@ help:
 	@echo "clean-pyc - remove Python file artifacts"
 	@echo "clean-test - remove test and coverage artifacts"
 	@echo "lint - check style with pylint"
-	@echo "test - run tests quickly with the default Python"
+	@echo "test - run tests quickly with nosetests"
 	@echo "test-all - run tests on every Python version with tox"
-	@echo "coverage - check code coverage quickly with the default Python"
+	@echo "coverage - check code coverage quickly with nosetests"
 	@echo "docs - generate Sphinx HTML documentation, including API docs"
 	@echo "release - package and upload a release"
 	@echo "dist - package"
@@ -35,36 +35,64 @@ clean-test:
 	rm -fr htmlcov/
 
 lint:
-	pylint dotfiles_scripts tests
+	@if ! which pep8 >/dev/null; then echo "pep8 not installed.\nRun:\n    pip install pep8" && false; fi
+	@if ! which pylint >/dev/null; then echo "pylint not installed.\nRun:\n    pip install pylint" && false; fi
+	-pep8 dotfiles_scripts tests
+	-find dotfiles_scripts -name "*.py" -exec pylint {} +
+	-find tests -name "*.py" -exec pylint {} +
 
-test:
-	python setup.py test
+test: test-deps clean-pyc
+	python setup.py nosetests
 
-test-all:
+test-cover: test-deps clean-pyc
+	python setup.py nosetests --with-coverage --cover-package=dotfiles_scripts
+
+test-all: test-deps clean-pyc
+	@if ! which tox >/dev/null; then echo "tox not installed.\nRun:\n    pip install tox" && false; fi
 	tox
 
-coverage:
-	coverage run --source dotfiles_scripts setup.py test
-	coverage report -m
-	coverage html
-	open htmlcov/index.html
+test-deps:
+	pip install -r requirements/test.txt
 
-docs:
+coverage: test-deps clean-pyc
+	coverage run --source dotfiles_scripts setup.py nosetests
+	make coverage-show
+
+coverage-all:
+	coverage erase
+	make test-all
+	make coverage-show
+
+coverage-show:
+	coverage report
+	coverage html
+	see htmlcov/index.html
+
+docs: docs-deps
 	rm -f docs/dotfiles_scripts.rst
 	rm -f docs/modules.rst
 	sphinx-apidoc -o docs/ dotfiles_scripts
 	$(MAKE) -C docs clean
 	$(MAKE) -C docs html
-	open docs/_build/html/index.html
+	see docs/_build/html/index.html
 
-release: clean
+docs-deps:
+	pip install -r requirements/docs.txt
+
+release: clean dist-deps
 	python setup.py sdist upload
 	python setup.py bdist_wheel upload
 
-dist: clean
+dist: clean dist-deps
 	python setup.py sdist
 	python setup.py bdist_wheel
 	ls -l dist
 
+dist-deps:
+	pip install -r requirements/dist.txt
+
 install: clean
 	python setup.py install
+
+yapf:
+	find dotfiles_scripts -name "*.py" -exec echo {} \; -exec yapf --diff {} \;
