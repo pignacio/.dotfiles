@@ -1,8 +1,8 @@
 command! ReIndent call ReIndent()
 function! ReIndent()
-  let l:cursor_pos = getpos(".")
+  let l:winview = winsaveview()
   :normal gg=G
-  call setpos(".", l:cursor_pos)
+  call winrestview(l:winview)
 endfunction
 
 
