@@ -15,7 +15,8 @@ with open('HISTORY.rst') as history_file:
     history = history_file.read().replace('.. :changelog:', '')
 
 requirements = [
-    # TODO: put package requirements here
+  'GitPython',
+  'pignacio_scripts',
 ]
 
 test_requirements = [
@@ -59,6 +60,7 @@ setup(
             'initvirtualenv=dotfiles_scripts.init_virtualenv:main',
             'ghclone=dotfiles_scripts.github_clone:main',
             'djrunserver=dotfiles_scripts.django_runserver:main',
+            'gmnf=dotfiles_scripts.git_merge_noff:main',
         ],
     },
 )
