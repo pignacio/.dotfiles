@@ -30,6 +30,7 @@ Plugin 'honza/vim-snippets'
 Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'kien/ctrlp.vim'
 Plugin 'majutsushi/tagbar'
+Plugin 'mattn/emmet-vim'
 " Plugin 'pignacio/vim-yapf-format'
 set runtimepath+=$HOME/.vim/bundle/vim-yapf-format
 Plugin 'raimondi/delimitmate'
