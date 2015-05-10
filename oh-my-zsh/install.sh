@@ -13,21 +13,9 @@ install_oh_my_zsh() {
   fi
 }
 
-patch_flazz() {
-  FLAG=$FLAGS_DIR/oh-my-zsh-flazz-patch
-
-  if [[ ! -f $FLAG ]]; then
-    REPO=~/.oh-my-zsh
-
-    log_info "Patching flazz theme"
-    ( cd $REPO && git apply $CLONE_DIR/oh-my-zsh/flazz-theme.patch )
-    log_info "Commit"
-    ( cd $REPO && git commit . -m "Patching flazz theme" )
-
-    touch $FLAG
-  else
-    log_info "Flazz is already patched. Flag: '$FLAG'"
-  fi
+install_custom_theme() {
+  log_info "Installing custom oh-my-zsh theme"
+  backupAndLink $CLONE_DIR/oh-my-zsh/pignacio.zsh-theme ~/.oh-my-zsh/themes/pignacio.zsh-theme
 }
 
 set_zsh_as_default_shell() {
@@ -49,6 +37,6 @@ replace_default_config() {
 }
 
 install_oh_my_zsh
-patch_flazz
+install_custom_theme
 set_zsh_as_default_shell
 replace_default_config
