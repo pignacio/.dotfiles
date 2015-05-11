@@ -13,7 +13,7 @@ with open('HISTORY.rst') as history_file:
 
 requirements = [
   'GitPython',
-  'pignacio_scripts',
+  'pignacio_scripts>=0.0.3',
 ]
 
 setup(
