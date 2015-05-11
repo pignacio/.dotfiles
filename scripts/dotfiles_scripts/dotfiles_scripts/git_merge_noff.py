@@ -67,9 +67,18 @@ def main():
     logging.basicConfig(stream=sys.stdout, level=logging.INFO)
     options = _get_argument_parser().parse_args()
 
-    repo = git.Repo('.', search_parent_directories=True)
+    try:
+        repo = git.Repo('.', search_parent_directories=True)
+    except git.exc.InvalidGitRepositoryError:
+        print bright_red('This is not a valid git repository!')
+        return
 
-    branch = repo.branches[options.branch]
+    try:
+        branch = repo.branches[options.branch]
+    except IndexError:
+        print bright_red('"{}" is not a valid branch!'.format(options.branch))
+        return
+
     active_branch = repo.active_branch
 
     if options.into:
