@@ -184,4 +184,6 @@ while read -r line; do
 done < <(project_jump "$@")
 }
 
+alias turn-monitor-off="sleep 1s; xset -display :0 dpms force off"
+
 # vim: ft=zsh
