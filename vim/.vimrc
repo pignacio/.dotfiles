@@ -170,7 +170,7 @@ let g:syntastic_mode_map = {
     \ "passive_filetypes": ["python"] }
 
 " SyntasticCheck binding
-map <C-c> :w<CR>:SyntasticCheck<CR>
+map <C-c> :let b:syntastic_skip_checks = 0<CR>:w<CR>:SyntasticCheck<CR>
 
 " Use all python checkers
 let g:syntastic_python_checkers = ['python', 'pep8', 'pylint']
