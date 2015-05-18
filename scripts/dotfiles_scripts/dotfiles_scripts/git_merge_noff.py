@@ -91,6 +91,8 @@ def main():
     if _needs_rebase(base, to_merge):
         print bright_red('To merge "{}" into "{}" you must rebase its '
                          'contents first!'.format(to_merge, base))
+        print "To do that, run:"
+        print "  git checkout {} && git rebase {}".format(to_merge, base)
         return
 
     if options.skip_tests:
