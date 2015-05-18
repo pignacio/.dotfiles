@@ -62,3 +62,31 @@ endsnippet
 snippet ye "yapf enable comment"
 # yapf: enable
 endsnippet
+
+snippet _a "__all__"
+__all__ = (
+    '${0}',
+)  # yapf: disable
+endsnippet
+
+global !p
+def get_current_class_name():
+    import re
+    for lineno in reversed(xrange(vim.current.range.start)):
+        match = re.match('\s*class\s*(\w+)\(', vim.current.buffer[lineno])
+	if match:
+		return match.group(1)
+    return "Class"
+endglobal
+
+
+snippet cdata "Context data"
+def get_context_data(self, *args, *kwargs):
+    data = super(${1:`!p snip.rv = get_current_class_name()`}, self).get_context_data(*args, **kwargs)
+    ${0}
+    return data
+endsnippet
+
+snippet super "super(Class, self)"
+super(${1:`!p snip.rv = get_current_class_name()`}, self).${0}
+endsnippet
