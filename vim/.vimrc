@@ -138,6 +138,7 @@ let g:jedi#popup_on_dot = 0
 
 " global YCM conficuration
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+let g:ycm_collect_identifiers_from_tags_files = 1
 
 " email
 let g:email = 'rossi.ignacio@gmail.com'
