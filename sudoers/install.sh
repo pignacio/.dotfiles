@@ -27,6 +27,7 @@ add_sudoers_no_pass_command /sbin/shutdown
 add_sudoers_no_pass_command /sbin/reboot
 add_sudoers_no_pass_command /usr/sbin/iftop
 add_sudoers_no_pass_command /usr/bin/puppet
+add_sudoers_no_pass_command /usr/bin/perf
 
 if is_installed lxc; then
   log_title "Adding lxc commands to sudoers file"
