@@ -23,3 +23,8 @@ map <buffer> <Leader>cx :Coveragepy session <CR>
 map <buffer> <C-o> :YapfFullFormat<CR>
 imap <buffer> <C-o> <ESC>:YapfFormat<CR>i
 vmap <buffer> <C-o> :YapfFormat<CR>
+
+" Run and show format diff in new buffer mappings
+nmap <buffer> <C-e> :! ipython %<CR>
+nmap <buffer> <C-g> :! ipython -i %<CR>
+nmap <buffer> <C-f> :! time yapf --diff %<CR>
