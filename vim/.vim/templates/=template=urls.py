@@ -7,9 +7,7 @@ import logging
 
 from django.conf.urls import patterns, url
 
-
 logger = logging.getLogger(__name__)  # pylint: disable=invalid-name
-
 
 urlpatterns = patterns(  # pylint: disable=invalid-name
     'ingredient.views',
