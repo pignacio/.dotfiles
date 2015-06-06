@@ -3,6 +3,8 @@ build-essential
 cmake
 exuberant-ctags
 htop
+linux-tools-common
+linux-tools-generic
 nodejs
 nodejs-legacy
 python-dev
