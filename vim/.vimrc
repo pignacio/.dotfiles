@@ -99,12 +99,14 @@ let g:airline#extensions#tabline#enabled = 1
 
 map <Leader>t :Tagbar <CR>
 let g:tagbar_autofocus = 1
-" Ignores for CtrlP
-set wildignore+=*.pyc
 
-" Show hidden files in ctrlp, except bundle
+" Show hidden files in ctrlp
 let g:ctrlp_show_hidden = 1
-let g:ctrlp_custom_ignore = '\v[\/](bundle|target|dist|.*egg-info|assets|_build)|(\.(swp|bzr|git|svn|eggs|tox))$'
+let g:ctrlp_custom_ignore = {
+      \ 'dir': '\v[\/](bundle|target|dist|.*egg-info|assets|_build|.*.egg|\.(swp|bzr|git|svn|eggs|tox))$',
+      \ 'file': '\v\.(exe|so|dll|d|o|py[cod])$',
+      \ }
+
 
 set foldlevelstart=0
 
