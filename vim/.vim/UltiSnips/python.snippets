@@ -26,6 +26,12 @@ class ${1:MyModel}(models.Model):
         db_table = '${1/(.)?([A-Z])/(?1:$1_\l$2:\l$2)/g}'
         verbose_name = '${1/(.)?([A-Z])/(?1:$1 \l$2:\l$2)/g}'
         verbose_name_plural = '${1/(.)?([A-Z])/(?1:$1 \l$2:\l$2)/g}s'
+
+    def get_absolute_url(self):
+        pass
+
+    def __unicode__(self):
+        pass
 endsnippet
 
 snippet charf "CharField"
@@ -55,6 +61,10 @@ def _get_arg_parser():
     return parser
 endsnippet
 
+snippet pd "pylint disable comment"
+# pylint: disable=${0}
+endsnippet
+
 snippet yd "yapf disable comment"
 # yapf: disable
 endsnippet
@@ -70,23 +80,46 @@ __all__ = (
 endsnippet
 
 global !p
-def get_current_class_name():
+def get_current_class_name(extra_indent=4):
     import re
+    current_indent = len(re.match('(\s*)', vim.current.line).group(1))
+    current_indent -= extra_indent
     for lineno in reversed(xrange(vim.current.range.start)):
-        match = re.match('\s*class\s*(\w+)\(', vim.current.buffer[lineno])
-	if match:
-		return match.group(1)
+        match = re.match('(\s*)class\s*(\w+)\(', vim.current.buffer[lineno])
+        if match and len(match.group(1)) < current_indent:
+            return match.group(2)
     return "Class"
 endglobal
 
-
-snippet cdata "Context data"
-def get_context_data(self, *args, *kwargs):
-    data = super(${1:`!p snip.rv = get_current_class_name()`}, self).get_context_data(*args, **kwargs)
+snippet over "Override"
+def ${1:function_name}(self, ${2:*args, **kwargs}):
+    ${3:res} = super(${4:`!p snip.rv = get_current_class_name()`}, self).$1(${5:$2})
     ${0}
-    return data
+    return $3
+endsnippet
+
+snippet vover "Void Override"
+def ${1:function_name}(self, ${2:*args, **kwargs}):
+    super(${4:`!p snip.rv = get_current_class_name()`}, self).$1(${5:$2})
+    ${0}
+endsnippet
+
+snippet rover "Return Override"
+def ${1:function_name}(self, ${2:*args, **kwargs}):
+    ${0}
+    return super(${4:`!p snip.rv = get_current_class_name()`}, self).$1(${5:$2})
 endsnippet
 
 snippet super "super(Class, self)"
 super(${1:`!p snip.rv = get_current_class_name()`}, self).${0}
+endsnippet
+
+snippet nosemain "Main method for nose tests"
+if __name__ == '__main__':
+    from nose import main
+    main(defaultTest=__name__)
+endsnippet
+
+snippet _ "Translation"
+_('${0}')
 endsnippet

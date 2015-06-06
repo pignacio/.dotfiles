@@ -12,3 +12,26 @@ endsnippet
 snippet { "variabletag" i
 {{ ${1} }}${2}
 endsnippet
+
+snippet table "Boostrap table" b
+<table class="table">
+  <thead>
+    <tr>
+      <th>${0}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+endsnippet
+
+snippet tdeb "Django template debug"
+<pre> {% filter force_escape %} {% debug %} {% endfilter %} </pre>
+endsnippet
+
+snippet glyph "Bootstrap glyphicon" i
+<span class="glyphicon glyphicon-${1:plus}" aria-hidden="true"></span>${0}
+endsnippet
