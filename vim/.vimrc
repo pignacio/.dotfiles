@@ -188,6 +188,49 @@ au FileType htmldjango let b:delimitMate_matchpairs = ""
 " custom vim-templates dir
 let g:templates_directory = '~/.vim/templates'
 
+let g:templates_user_variables = [
+      \['MY_GUARD', 'GetSrcGuard'],
+      \['NS_START', 'GetSrcNamespacesStart'],
+      \['NS_END', 'GetSrcNamespacesEnd'],
+      \['HEADER', 'GetSrcHeader'],
+      \]
+function GetSrcPath()
+  return split(expand('%:p'), '/src/')[-1]
+endfunction
+
+function GetSrcGuard()
+  return toupper(substitute(GetSrcPath(), "[^a-zA-Z0-9]", "_", "g")) . '_'
+endfunction
+
+function GetSrcHeader()
+  let l:values = split(GetSrcPath(), '\.')
+  echo "len" . len(l:values) . ' path ' . GetSrcPath()
+  let l:values[-1] = 'h'
+  return join(l:values, '.')
+endfunction
+
+function GetSrcNamespaces()
+  return  split(GetSrcPath(), '/')[:-2]
+endfunction
+
+function GetSrcNamespacesStart()
+  let l:declarations = []
+  for l:namespace in GetSrcNamespaces()
+    call add(l:declarations, 'namespace ' . l:namespace . ' {')
+  endfor
+  return join(l:declarations, '\r')
+endfunction
+
+function GetSrcNamespacesEnd()
+  let l:declarations = []
+  for l:namespace in GetSrcNamespaces()
+    call add(l:declarations, '}  // namespace ' . l:namespace)
+  endfor
+  call reverse(l:declarations)
+  return join(l:declarations, '\r')
+endfunction
+
+
 " yapf location
 let g:yapf_format_yapf_location = '~/src/yapf'
 

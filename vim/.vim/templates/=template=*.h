@@ -5,9 +5,13 @@
  * Distributed under terms of the %LICENSE% license.
  */
 
-#ifndef %GUARD%
-#define %GUARD%
+#ifndef %MY_GUARD%
+#define %MY_GUARD%
+
+%NS_START%
 
 %HERE%
 
-#endif  // %GUARD%
+%NS_END%
+
+#endif  // %MY_GUARD%

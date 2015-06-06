@@ -5,7 +5,10 @@
  * Distributed under terms of the %LICENSE% license.
  */
 
-#include "%FILE%.h"
+#include "%HEADER%"
 
+%NS_START%
 
 %HERE%
+
+%NS_END%
