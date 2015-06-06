@@ -31,6 +31,7 @@ Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'kien/ctrlp.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'mattn/emmet-vim'
+Plugin 'octol/vim-cpp-enhanced-highlight'
 " Plugin 'pignacio/vim-yapf-format'
 set runtimepath+=$HOME/.vim/bundle/vim-yapf-format
 Plugin 'raimondi/delimitmate'
@@ -98,12 +99,14 @@ let g:airline#extensions#tabline#enabled = 1
 
 map <Leader>t :Tagbar <CR>
 let g:tagbar_autofocus = 1
-" Ignores for CtrlP
-set wildignore+=*.pyc
 
-" Show hidden files in ctrlp, except bundle
+" Show hidden files in ctrlp
 let g:ctrlp_show_hidden = 1
-let g:ctrlp_custom_ignore = '\v[\/](bundle|target|dist|.*egg-info|assets|_build)|(\.(swp|bzr|git|svn|eggs|tox))$'
+let g:ctrlp_custom_ignore = {
+      \ 'dir': '\v[\/](bundle|target|dist|.*egg-info|assets|_build|.*.egg|\.(swp|bzr|git|svn|eggs|tox))$',
+      \ 'file': '\v\.(exe|so|dll|d|o|py[cod])$',
+      \ }
+
 
 set foldlevelstart=0
 
@@ -135,6 +138,7 @@ let g:jedi#popup_on_dot = 0
 
 " global YCM conficuration
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+let g:ycm_collect_identifiers_from_tags_files = 1
 
 " email
 let g:email = 'rossi.ignacio@gmail.com'
@@ -187,6 +191,49 @@ au FileType htmldjango let b:delimitMate_matchpairs = ""
 " custom vim-templates dir
 let g:templates_directory = '~/.vim/templates'
 
+let g:templates_user_variables = [
+      \['MY_GUARD', 'GetSrcGuard'],
+      \['NS_START', 'GetSrcNamespacesStart'],
+      \['NS_END', 'GetSrcNamespacesEnd'],
+      \['HEADER', 'GetSrcHeader'],
+      \]
+function GetSrcPath()
+  return split(expand('%:p'), '/src/')[-1]
+endfunction
+
+function GetSrcGuard()
+  return toupper(substitute(GetSrcPath(), "[^a-zA-Z0-9]", "_", "g")) . '_'
+endfunction
+
+function GetSrcHeader()
+  let l:values = split(GetSrcPath(), '\.')
+  echo "len" . len(l:values) . ' path ' . GetSrcPath()
+  let l:values[-1] = 'h'
+  return join(l:values, '.')
+endfunction
+
+function GetSrcNamespaces()
+  return  split(GetSrcPath(), '/')[:-2]
+endfunction
+
+function GetSrcNamespacesStart()
+  let l:declarations = []
+  for l:namespace in GetSrcNamespaces()
+    call add(l:declarations, 'namespace ' . l:namespace . ' {')
+  endfor
+  return join(l:declarations, '\r')
+endfunction
+
+function GetSrcNamespacesEnd()
+  let l:declarations = []
+  for l:namespace in GetSrcNamespaces()
+    call add(l:declarations, '}  // namespace ' . l:namespace)
+  endfor
+  call reverse(l:declarations)
+  return join(l:declarations, '\r')
+endfunction
+
+
 " yapf location
 let g:yapf_format_yapf_location = '~/src/yapf'
 
@@ -210,3 +257,10 @@ function! s:RunShellCommand(cmdline)
   setlocal nomodifiable
   1
 endfunction
+
+let g:alternateExtensions_h = 'cpp'
+
+" Custom colorscheme for buffers
+au BufEnter * if (exists("b:colors_name")) | let b:current_colors=colors_name
+ \| execute "colorscheme " . b:colors_name | endif
+au BufLeave * if (exists("b:current_colors")) | execute "colorscheme " . b:current_colors | endif
