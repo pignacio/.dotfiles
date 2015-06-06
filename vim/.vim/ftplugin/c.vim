@@ -19,3 +19,5 @@ noremap <leader>c :let cloutput=system('cpplint.py --root=src '.expand('%'))<cr>
 map <C-o> :%pyf /usr/share/vim/addons/syntax/clang-format-3.5.py<CR>
 imap <C-o> <ESC>:pyf /usr/share/vim/addons/syntax/clang-format-3.5.py<CR>i
 vmap <C-o> :pyf /usr/share/vim/addons/syntax/clang-format-3.5.py<CR>
+
+let b:colors_name = 'molokai'

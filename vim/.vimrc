@@ -31,6 +31,7 @@ Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'kien/ctrlp.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'mattn/emmet-vim'
+Plugin 'octol/vim-cpp-enhanced-highlight'
 " Plugin 'pignacio/vim-yapf-format'
 set runtimepath+=$HOME/.vim/bundle/vim-yapf-format
 Plugin 'raimondi/delimitmate'
@@ -210,3 +211,8 @@ function! s:RunShellCommand(cmdline)
   setlocal nomodifiable
   1
 endfunction
+
+" Custom colorscheme for buffers
+au BufEnter * if (exists("b:colors_name")) | let b:current_colors=colors_name
+ \| execute "colorscheme " . b:colors_name | endif
+au BufLeave * if (exists("b:current_colors")) | execute "colorscheme " . b:current_colors | endif
