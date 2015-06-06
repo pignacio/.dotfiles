@@ -212,6 +212,8 @@ function! s:RunShellCommand(cmdline)
   1
 endfunction
 
+let g:alternateExtensions_h = 'cpp'
+
 " Custom colorscheme for buffers
 au BufEnter * if (exists("b:colors_name")) | let b:current_colors=colors_name
  \| execute "colorscheme " . b:colors_name | endif

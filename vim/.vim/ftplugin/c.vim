@@ -20,4 +20,7 @@ map <C-o> :%pyf /usr/share/vim/addons/syntax/clang-format-3.5.py<CR>
 imap <C-o> <ESC>:pyf /usr/share/vim/addons/syntax/clang-format-3.5.py<CR>i
 vmap <C-o> :pyf /usr/share/vim/addons/syntax/clang-format-3.5.py<CR>
 
+" switch between header and source
+map <buffer> <leader>f :A<CR>
+
 let b:colors_name = 'molokai'
