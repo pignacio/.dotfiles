@@ -12,12 +12,12 @@ highlight ColorColumn ctermbg=200
 call matchadd('ColorColumn', '\%81v', 100)
 
 " cpplint results in preview window
-noremap <leader>c :let cloutput=system('cpplint.py --root=src '.expand('%'))<cr>:new<cr>:put =cloutput<cr>:q!
+noremap <buffer> <leader>c :Shell cpplint.py --root=src %<CR><CR>
 
 " clang-format
-map <C-o> :%pyf /usr/share/vim/addons/syntax/clang-format-3.5.py<CR>
-imap <C-o> <ESC>:pyf /usr/share/vim/addons/syntax/clang-format-3.5.py<CR>i
-vmap <C-o> :pyf /usr/share/vim/addons/syntax/clang-format-3.5.py<CR>
+map <buffer> <C-l> :%pyf /usr/share/vim/addons/syntax/clang-format-3.5.py<CR>
+imap <buffer> <C-l> <ESC>:pyf /usr/share/vim/addons/syntax/clang-format-3.5.py<CR>i
+vmap <buffer> <C-l> :pyf /usr/share/vim/addons/syntax/clang-format-3.5.py<CR>
 
 " goto
 map <buffer> <leader>g :YcmCompleter GoTo<CR>
