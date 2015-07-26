@@ -20,9 +20,9 @@ map <buffer> <Leader>cr :Coveragepy report <CR>
 map <buffer> <Leader>cx :Coveragepy session <CR>
 
 " yapf-format
-map <buffer> <C-o> :YapfFullFormat<CR>
-imap <buffer> <C-o> <ESC>:YapfFormat<CR>i
-vmap <buffer> <C-o> :YapfFormat<CR>
+map <buffer> <C-l> :YapfFullFormat<CR>
+imap <buffer> <C-l> <ESC>:YapfFormat<CR>i
+vmap <buffer> <C-l> :YapfFormat<CR>
 
 " Run and show format diff in new buffer mappings
 nmap <buffer> <C-e> :! ipython %<CR>
