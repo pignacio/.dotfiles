@@ -58,7 +58,7 @@ hi PmenuSel    ctermfg=15   ctermbg=29    cterm=bold
 hi PmenuSbar   ctermfg=81   ctermbg=16    cterm=NONE
 hi PmenuThumb  ctermfg=81   ctermbg=16    cterm=NONE
 hi Search      ctermfg=253  ctermbg=66    cterm=NONE
-hi IncSearch   ctermfg=253  ctermbg=66    cterm=NONE
+hi IncSearch   ctermfg=119  ctermbg=162    cterm=NONE
 hi TabLine     ctermfg=3    ctermbg=NONE  cterm=NONE
 hi TabLineSel  ctermfg=14   ctermbg=NONE  cterm=bold
 hi TabLineFill ctermfg=46   ctermbg=NONE  cterm=NONE
