@@ -123,3 +123,19 @@ endsnippet
 snippet _ "Translation"
 _('${0}')
 endsnippet
+
+snippet todo "ToDo"
+# TODO(${1:irossi}): ${0}
+endsnippet
+
+snippet cm "Class method"
+@classmethod
+def ${1:name}(cls, ${2}):
+    ${0}
+endsnippet
+
+snippet sm "Static method"
+@staticmethod
+def ${1:name}(${2}):
+    ${0}
+endsnippet
