@@ -22,6 +22,7 @@ call vundle#begin()
 Plugin 'alfredodeza/coveragepy.vim'
 Plugin 'aperezdc/vim-template'
 Plugin 'bling/vim-airline'
+Plugin 'conradirwin/vim-bracketed-paste'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'elzr/vim-json'
 Plugin 'gmarik/Vundle.vim'
