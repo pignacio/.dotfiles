@@ -266,3 +266,6 @@ let g:alternateExtensions_h = 'cpp'
 au BufEnter * if (exists("b:colors_name")) | let b:current_colors=colors_name
  \| execute "colorscheme " . b:colors_name | endif
 au BufLeave * if (exists("b:current_colors")) | execute "colorscheme " . b:current_colors | endif
+
+" Select last paste
+nnoremap gp `[V`]
