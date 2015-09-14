@@ -108,7 +108,7 @@ let g:tagbar_autofocus = 1
 " Show hidden files in ctrlp
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_custom_ignore = {
-      \ 'dir': '\v[\/](bundle|target|dist|.*egg-info|assets|_build|.*.egg|\.(swp|bzr|git|svn|eggs|tox))$',
+      \ 'dir': '\v[\/](bundle|target|dist|.*egg-info|assets|_build|.*.egg|node_modules|\.(swp|bzr|git|svn|eggs|tox))$',
       \ 'file': '\v\.(exe|so|dll|d|o|py[cod])$',
       \ }
 
