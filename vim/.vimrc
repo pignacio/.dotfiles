@@ -28,6 +28,7 @@ Plugin 'elzr/vim-json'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'godlygeek/tabular'
 Plugin 'honza/vim-snippets'
+Plugin 'luochen1990/rainbow'
 Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'kien/ctrlp.vim'
 Plugin 'majutsushi/tagbar'
@@ -269,3 +270,35 @@ au BufLeave * if (exists("b:current_colors")) | execute "colorscheme " . b:curre
 
 " Select last paste
 nnoremap gp `[V`]
+
+" rainbow config
+let g:rainbow_active = 1
+
+let g:rainbow_conf = {
+    \   'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
+    \   'ctermfgs': ['darkblue', 'darkyellow', 'darkmagenta', 'darkred', 'darkgreen'],
+    \   'operators': '_,_',
+    \   'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
+    \   'separately': {
+    \       '*': {},
+    \       'tex': {
+    \           'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/'],
+    \       },
+    \       'python': {
+    \           'operators': '_[:,]_',
+    \       },
+    \       'vim': {
+    \           'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/', 'start=/{/ end=/}/ fold', 'start=/(/ end=/)/ containedin=vimFuncBody', 'start=/\[/ end=/\]/ containedin=vimFuncBody', 'start=/{/ end=/}/ fold containedin=vimFuncBody'],
+    \       },
+    \       'html': {
+    \           'parentheses': ['start=/\v\<((area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|param|source|track|wbr)[ >])@!\z([-_:a-zA-Z0-9]+)(\s+[-_:a-zA-Z0-9]+(\=("[^"]*"|'."'".'[^'."'".']*'."'".'|[^ '."'".'"><=`]*))?)*\>/ end=#</\z1># fold'],
+    \       },
+    \       'htmldjango': {
+    \           'parentheses': ['start=/\v\<((area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|param|source|track|wbr)[ >])@!\z([-_:a-zA-Z0-9]+)(\s+[-_:a-zA-Z0-9]+(\=("[^"]*"|'."'".'[^'."'".']*'."'".'|[^ '."'".'"><=`]*))?)*\>/ end=#</\z1># fold'],
+    \       },
+    \       'css': 0,
+    \   }
+    \}
+
+execute "set <M-q>=\eq"
+nmap <M-q> :RainbowToggle<CR>
