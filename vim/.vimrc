@@ -307,3 +307,16 @@ let g:rainbow_conf = {
 
 execute "set <M-q>=\eq"
 nmap <M-q> :RainbowToggle<CR>
+
+" Toggle Syntastic error list
+function! ToggleErrors()
+    let old_last_winnr = winnr('$')
+    lclose
+    if old_last_winnr == winnr('$')
+        " Nothing was closed, open syntastic error location panel
+        Errors
+    endif
+endfunction
+
+execute "set <M-d>=\ed"
+nmap <M-d> :call ToggleErrors()<CR>
