@@ -11,6 +11,7 @@ logger = logging.getLogger(__name__)  # pylint: disable=invalid-name
 
 
 _PACKAGES = (
+    'ipdb',
     'mock',
     'nose',
     'pylint',
