@@ -273,6 +273,9 @@ au BufLeave * if (exists("b:current_colors")) | execute "colorscheme " . b:curre
 " Select last paste
 nnoremap gp `[V`]
 
+" run make mapping
+nmap <c-n> :!make<cr>
+
 " rainbow config
 let g:rainbow_active = 1
 
