@@ -4,9 +4,9 @@ setlocal shiftwidth=4
 setlocal smarttab
 setlocal expandtab
 setlocal foldmethod=indent
-set nosmartindent
-set list!
-set listchars=tab:>-
+setlocal nosmartindent
+setlocal list!
+setlocal listchars=tab:>-
 
 highlight ColorColumn ctermbg=200
 call matchadd('ColorColumn', '\%81v', 100)
@@ -25,6 +25,6 @@ imap <buffer> <C-l> <ESC>:YapfFormat<CR>i
 vmap <buffer> <C-l> :YapfFormat<CR>
 
 " Run and show format diff in new buffer mappings
-nmap <buffer> <C-e> :! ipython %<CR>
-nmap <buffer> <C-g> :! ipython -i %<CR>
-nmap <buffer> <C-f> :! time yapf --diff %<CR>
+nmap <buffer> mpr :! ipython %<CR>
+nmap <buffer> mpi :! ipython -i %<CR>
+nmap <buffer> mpf :! time yapf --diff %<CR>
