@@ -113,6 +113,7 @@ let g:ctrlp_custom_ignore = {
       \ 'file': '\v\.(exe|so|dll|d|o|py[cod])$',
       \ }
 
+let g:ctrlp_open_new_file = 't'
 
 set foldlevelstart=0
 
