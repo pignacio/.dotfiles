@@ -317,3 +317,5 @@ let g:lt_location_list_toggle_map = '<leader>v'
 let g:lt_height = 10
 
 
+vmap <leader>c :w !xclip -selection c<CR><CR>
+nmap <leader>c :w% !xclip -selection c

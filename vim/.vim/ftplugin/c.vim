@@ -13,7 +13,7 @@ highlight ColorColumn ctermbg=200
 call matchadd('ColorColumn', '\%81v', 100)
 
 " cpplint results in preview window
-noremap <buffer> <leader>c :Shell cpplint.py --root=src %<CR><CR>
+noremap <buffer> <leader>x :Shell cpplint.py --root=src %<CR><CR>
 
 " clang-format
 map <buffer> <C-l> :%pyf /usr/share/vim/addons/syntax/clang-format-3.5.py<CR>
