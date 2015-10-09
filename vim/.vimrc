@@ -69,6 +69,8 @@ set incsearch  " do incremental searching
 set background=dark
 
 autocmd BufWrite * FixWhitespace
+autocmd BufEnter * let &titlestring = hostname() . "[vim(" . expand("%") . ")]"
+set title
 
 " Enabling colors in console
 if (!has("gui_running"))
