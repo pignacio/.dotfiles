@@ -33,6 +33,10 @@ function djpylint() {
 }
 alias djmakemessages='./manage.py makemessages --no-wrap --no-location '
 
+function pygrep() {
+  find . -name "*.py" -not -path "*/migrations/*" -exec grep --color=auto "$@" {} +
+}
+
 # General stuff
 alias ap='readlink -f'
 alias bp='beet-playlist'
