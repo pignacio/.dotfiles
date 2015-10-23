@@ -116,7 +116,7 @@ def main():
 
     while True:
         logger.info('Collecting static files')
-        subprocess.call(['python', manage_py, 'collectstatic', '--noinput'])
+        subprocess.call(['python', manage_py, 'collectstatic', '--clear', '--noinput'])
         logger.info('Compressing')
         subprocess.call(['python', manage_py, 'compress'])
         try:
