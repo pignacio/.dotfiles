@@ -8,9 +8,12 @@ import collections
 import json
 import logging
 import os
+import re
 import subprocess
 import sys
 import time
+
+import pyinotify
 
 logger = logging.getLogger(__name__)  # pylint: disable=invalid-name
 
@@ -83,6 +86,44 @@ def _read_config(config_file):
         return json.load(config_fp)
 
 
+class EventHandler(pyinotify.ProcessEvent):
+    def __init__(self, *args, **kwargs):
+        super(EventHandler, self).__init__(*args, **kwargs)
+        self.touched = False
+
+    def process_default(self, *args, **kwargs):
+        self.touched = True
+
+
+def _get_staticfiles_notifier(handler):
+    manager = pyinotify.WatchManager()
+    mask = pyinotify.IN_MODIFY | pyinotify.IN_CREATE | pyinotify.IN_DELETE
+
+    proc = subprocess.Popen(['python', '-c', (
+        'from django.conf import settings\n'
+        'for dirname in settings.STATICFILES_DIRS: print dirname')],
+                            stdout=subprocess.PIPE)
+
+    for line in proc.stdout:
+        if line.strip():
+            logger.info("Watching '%s'", line.strip())
+            manager.add_watch(line.strip(), mask, rec=True)
+
+    return pyinotify.Notifier(manager, handler, timeout=1)
+
+
+def _get_all_pids(pid):
+    proc = subprocess.Popen(['pstree', str(pid), '-p'], stdout=subprocess.PIPE)
+    pids = re.findall(r'\(\d+\)', proc.stdout.read())
+    return [p.strip("()") for p in pids]
+
+
+def _poll_notifier(notifier):
+    notifier.process_events()
+    while notifier.check_events():
+        notifier.read_events()
+        notifier.process_events()
+
 def main():
     logging.basicConfig(stream=sys.stdout, level=logging.INFO)
     options = _get_argument_parser().parse_args()
@@ -114,19 +155,42 @@ def main():
 
     runserver.extend(options.runserver_args)
 
+    handler = EventHandler()
+    notifier = _get_staticfiles_notifier(handler)
+
     while True:
+        _poll_notifier(notifier)
         logger.info('Collecting static files')
         subprocess.call(['python', manage_py, 'collectstatic', '--clear', '--noinput'])
         logger.info('Compressing')
         subprocess.call(['python', manage_py, 'compress'])
-        try:
-            logger.info('Running server... (command:%s)', runserver)
-            subprocess.call(runserver)
-        except KeyboardInterrupt:
-            # Allow Ctrl-Xing the server
-            pass
-        logger.info('Runserver stopped. Restarting in 5s')
-        time.sleep(5)
+        logger.info('Running server... (command:%s)', runserver)
+        proc = subprocess.Popen(runserver)
+        handler.touched = False
+        while proc.poll() is None and not handler.touched:
+            try:
+                _poll_notifier(notifier)
+                time.sleep(1)
+            except KeyboardInterrupt:
+                logger.info('Ctrl-C! Restarting server')
+                break
+
+            if proc.poll() is not None:
+                logger.info('Runserver stopped.')
+
+            if handler.touched:
+                logger.info('Static files changed.')
+
+        logger.info('Must restart.')
+        if proc.poll() is None:
+            logger.info("Runserver is still alive, killing it.")
+            subprocess.call(['kill', '-9'] + _get_all_pids(proc.pid))
+            logger.info("Waiting for server to yield.")
+            proc.wait()
+            logger.info("Server stopped.")
+
+        logger.info("Restarting server in 1 second...")
+        time.sleep(1)
 
 
 if __name__ == '__main__':
