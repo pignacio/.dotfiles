@@ -69,7 +69,6 @@ set showcmd  " display incomplete commands
 set incsearch  " do incremental searching
 set background=dark
 
-autocmd BufWrite * FixWhitespace
 autocmd BufEnter * let &titlestring = hostname() . "[vim(" . expand("%") . ")]"
 set title
 
@@ -322,3 +321,6 @@ let g:lt_height = 10
 
 vmap <leader>c :w !xclip -selection c<CR><CR>
 nmap <leader>c :w% !xclip -selection c
+
+" Fix whitespace mapping
+nmap mfw :FixWhitespace<CR>
