@@ -324,3 +324,4 @@ nmap <leader>c :w% !xclip -selection c
 
 " Fix whitespace mapping
 nmap mfw :FixWhitespace<CR>
+nnoremap ; :
