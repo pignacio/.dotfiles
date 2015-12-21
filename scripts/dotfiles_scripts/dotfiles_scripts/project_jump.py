@@ -102,6 +102,7 @@ def _matches(needle, haystack):
         if current == -1:
             return None
         indexes.append(current)
+        current += 1
     return indexes
 
 
