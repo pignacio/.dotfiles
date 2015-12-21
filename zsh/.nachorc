@@ -12,7 +12,7 @@ alias grb='git rebase'
 alias grbi='git rebase -i'
 alias prmb='git checkout master; git pull; grmb'
 alias grmb='git branch --merged | grep -v -e develop -e master -e "*" | xargs -r git branch -d'
-alias grrmb='git branch -a --merged | grep "remotes/origin" | grep -v -e HEAD -e develop -e master | cut -c 18- | xargs -r git push origin --delete'
+alias grrmb='git fetch --prune; git branch -a --merged | grep "remotes/origin" | grep -v -e HEAD -e develop -e master | cut -c 18- | xargs -r git push origin --delete'
 
 compdef _git gmnf=git-merge
 
