@@ -191,6 +191,7 @@ done < <(project_jump "$@")
 }
 
 alias turn-monitor-off="sleep 1s; xset -display :0 dpms force off"
+alias turn-monitor-on="xset -display :0 dpms force on"
 
 alias cl='~/src/cpulimit/cpulimit'
 
