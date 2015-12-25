@@ -327,6 +327,9 @@ nmap <leader>c :w% !xclip -selection c
 nmap mfw :FixWhitespace<CR>
 nnoremap ; :
 
+" use django filetype for all html files
+autocmd BufRead,BufNewFile *.html set ft=htmldjango
+
 " show dosctring preview
 let g:SimpylFold_docstring_preview = 1
 
