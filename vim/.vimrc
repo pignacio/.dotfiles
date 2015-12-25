@@ -29,10 +29,10 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'godlygeek/tabular'
 Plugin 'genoma/vim-less'
 Plugin 'honza/vim-snippets'
-Plugin 'luochen1990/rainbow'
 Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'juleswang/css.vim'
 Plugin 'kien/ctrlp.vim'
+Plugin 'luochen1990/rainbow'
 Plugin 'majutsushi/tagbar'
 Plugin 'mattn/emmet-vim'
 Plugin 'octol/vim-cpp-enhanced-highlight'
@@ -45,6 +45,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'sirver/ultisnips'
 Plugin 'tejr/vim-nagios'
 Plugin 'terryma/vim-expand-region'
+Plugin 'tmhedberg/SimpylFold'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-unimpaired'
@@ -325,3 +326,9 @@ nmap <leader>c :w% !xclip -selection c
 " Fix whitespace mapping
 nmap mfw :FixWhitespace<CR>
 nnoremap ; :
+
+" show dosctring preview
+let g:SimpylFold_docstring_preview = 1
+
+" map folding toggle to spacebar
+nnoremap <space> za
