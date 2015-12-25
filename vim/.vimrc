@@ -335,3 +335,6 @@ let g:SimpylFold_docstring_preview = 1
 
 " map folding toggle to spacebar
 nnoremap <space> za
+
+" Split to the bottom by default
+set splitbelow
