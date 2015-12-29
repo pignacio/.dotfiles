@@ -195,4 +195,20 @@ alias turn-monitor-on="xset -display :0 dpms force on"
 
 alias cl='~/src/cpulimit/cpulimit'
 
+function rep() {
+  if [[ "$1" =~ "^[0-9\.]+[smh]?$" ]]; then
+    echo "Found sleep time in '$1'."
+    local time=$1;
+    shift;
+  else
+    echo "'$1' is not a valid sleep time."
+    local time=1s;
+  fi
+  echo "Repeating '" "$@" "' every $time." 
+  while true; do
+    "$@"
+    sleep $time;
+  done
+}
+
 # vim: ft=zsh
