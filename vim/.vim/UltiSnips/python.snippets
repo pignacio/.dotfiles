@@ -147,3 +147,8 @@ endsnippet
 snippet pp "pretty print"
 from pprint import pprint; pprint(${0})
 endsnippet
+
+snippet meta "class Meta"
+class Meta(object):  # pylint:disable=too-few-public-methods
+    ${0}
+endsnippet
