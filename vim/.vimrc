@@ -338,3 +338,15 @@ nnoremap <space> za
 
 " Split to the bottom by default
 set splitbelow
+
+" Error list toggle
+function! ToggleErrors()
+    let old_last_winnr = winnr('$')
+    lclose
+    if old_last_winnr == winnr('$')
+        " Nothing was closed, open syntastic error location panel
+        Errors
+    endif
+endfunction
+
+nnoremap <silent> ll :call ToggleErrors()<CR>
