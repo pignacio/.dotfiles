@@ -91,6 +91,18 @@ def get_current_class_name(extra_indent=4):
     return "Class"
 endglobal
 
+global !p
+def get_current_function_name(extra_indent=0):
+    import re
+    current_indent = len(re.match('(\s*)', vim.current.line).group(1))
+    current_indent -= extra_indent
+    for lineno in reversed(xrange(vim.current.range.start)):
+        match = re.match('(\s*)def\s*(\w+)\(', vim.current.buffer[lineno])
+        if match and len(match.group(1)) < current_indent:
+            return match.group(2)
+    return "func"
+endglobal
+
 snippet over "Override"
 def ${1:function_name}(self, ${2:*args, **kwargs}):
     ${3:res} = super(${4:`!p snip.rv = get_current_class_name()`}, self).$1(${5:$2})
@@ -110,8 +122,8 @@ def ${1:function_name}(self, ${2:*args, **kwargs}):
     return super(${4:`!p snip.rv = get_current_class_name()`}, self).$1(${5:$2})
 endsnippet
 
-snippet super "super(Class, self)"
-super(${1:`!p snip.rv = get_current_class_name()`}, self).${0}
+snippet super "super(Class, self).func()"
+super(${1:`!p snip.rv = get_current_class_name()`}, self).${2:`!p snip.rv = get_current_function_name()`}(${0})
 endsnippet
 
 snippet nosemain "Main method for nose tests"
