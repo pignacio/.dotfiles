@@ -21,5 +21,6 @@ npm_install_binary () {
 }
 
 npm_install_binary jshint
+npm_install_binary jsonlint jsonlint lib/cli.js
 
 backupAndLink $CLONE_DIR/npm/.jshintrc ~/.jshintrc
