@@ -319,12 +319,25 @@ nmap <M-q> :RainbowToggle<CR>
 let g:lt_location_list_toggle_map = '<leader>v'
 let g:lt_height = 10
 
-
 vmap <leader>c :w !xclip -selection c<CR><CR>
 nmap <leader>c :w% !xclip -selection c
 
+" Exclude html from automatic traling whitespace trimming
+fun! StripTrailingWhitespace()
+  " Only strip if the b:noStripeWhitespace variable isn't set
+  if exists('b:noStripWhitespace')
+    return
+  endif
+  FixWhitespace
+endfun
+
+autocmd BufWrite * call StripTrailingWhitespace()
+autocmd FileType html,htmldjango let b:noStripWhitespace=1
+
 " Fix whitespace mapping
 nmap mfw :FixWhitespace<CR>
+
+" Map semicolon to colon
 nnoremap ; :
 
 " use django filetype for all html files
