@@ -350,3 +350,6 @@ function! ToggleErrors()
 endfunction
 
 nnoremap <silent> ll :call ToggleErrors()<CR>
+
+" Open YCM goto in new tabs
+let g:ycm_goto_buffer_command = 'new-tab'
