@@ -29,5 +29,5 @@ nmap <buffer> mpr :! ipython %<CR>
 nmap <buffer> mpi :! ipython -i %<CR>
 nmap <buffer> mpf :! time yapf --diff %<CR>
 
-" Trim whitespace on save
-autocmd BufWrite *.py FixWhitespace
+" goto
+map <buffer> <leader>g :YcmCompleter GoTo<CR>
