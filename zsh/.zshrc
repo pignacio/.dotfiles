@@ -36,6 +36,9 @@ plugins=(git compleat history-substring-search command-not-found virtualenv dock
 
 source $ZSH/oh-my-zsh.sh
 
+# Enable dircolors
+eval `dircolors -b`
+
 source $HOME/.nachorc;
 
 function vi_mode_prompt_info() {
