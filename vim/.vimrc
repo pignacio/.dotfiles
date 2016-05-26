@@ -49,6 +49,7 @@ Plugin 'tmhedberg/SimpylFold'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-unimpaired'
+Plugin 'tshirtman/vim-cython'
 Plugin 'valloric/listtoggle'
 Plugin 'valloric/youcompleteme'
 
