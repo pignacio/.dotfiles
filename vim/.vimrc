@@ -116,7 +116,12 @@ let g:ctrlp_custom_ignore = {
       \ 'dir': '\v[\/](bundle|target|dist|.*egg-info|assets|_build|.*.egg|node_modules|\.(swp|bzr|git|svn|eggs|tox))$',
       \ 'file': '\v\.(exe|so|dll|d|o|py[cod])$',
       \ }
-let g:ctrlp_user_command = 'find %s -type f | grep -v -E "`cat .ctrlpignore`"'
+let g:ctrlp_user_command = {
+      \ 'types': {
+      \   1: ['.ctrlpignore', 'find %s -type f | grep -v -E "`cat .ctrlpignore`"'],
+      \ },
+      \ 'ignore': 1
+      \ }
 let g:ctrlp_open_new_file = 't'
 
 set foldlevelstart=0
