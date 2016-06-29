@@ -222,5 +222,8 @@ function ptadd() {
   fi
 }
 
+function pcd() {
+  cd $(dirname "$(python -c "import $1; print $1.__file__")");
+}
 
 # vim: ft=zsh
