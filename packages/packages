@@ -8,5 +8,6 @@ linux-tools-generic
 nodejs
 nodejs-legacy
 python-dev
+ruby-dev
 vim
 wget

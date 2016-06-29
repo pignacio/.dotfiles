@@ -21,4 +21,6 @@ gem_install_binary () {
   chmod +x $local_bin
 }
 
+log_title "Installing gems"
 gem_install_binary puppet-lint
+gem_install_binary ghi
