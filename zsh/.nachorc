@@ -204,9 +204,10 @@ function rep() {
     echo "'$1' is not a valid sleep time."
     local time=1s;
   fi
-  echo "Repeating '" "$@" "' every $time." 
+  echo "Repeating '" "$@" "' every $time."
   while true; do
     "$@"
+    echo "rep: Exit code $?. Sleeping for $time..."
     sleep $time;
   done
 }
